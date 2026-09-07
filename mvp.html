@@ -39,17 +39,23 @@ button,input{font-family:inherit}button{cursor:pointer;border:0;background:none}
 .sp{font-size:12px;color:#5c6168;text-align:center;max-width:380px;line-height:1.45}
 .scenarios{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;max-width:400px}
 .scenarios button{font-size:11px;padding:7px 10px;border-radius:999px;background:#fff;font-weight:700;border:1px solid #d5d8de}
-.phone{width:390px;height:844px;background:#1a1a1a;border-radius:46px;padding:10px;box-shadow:0 24px 70px #0004}
+.phone{width:390px;height:844px;flex:none;background:#1a1a1a;border-radius:46px;padding:10px;box-shadow:0 24px 70px #0004}
 .phone-inner{width:100%;height:100%;border-radius:36px;overflow:hidden;position:relative;background:var(--bg)}
 .homebar{position:absolute;bottom:6px;left:50%;transform:translateX(-50%);width:120px;height:4px;background:#111;border-radius:4px;opacity:.4;z-index:60}
 .app{position:absolute;inset:0;display:flex;flex-direction:column}
 .status{height:46px;padding:12px 24px 0;display:flex;justify-content:space-between;font-size:12px;font-weight:700}
-.body{flex:1;overflow:auto;padding:0 16px 88px}
+.body{flex:1;overflow:auto;padding:0 16px 104px}
 .body::-webkit-scrollbar{width:0}
-.tabbar{position:absolute;left:0;right:0;bottom:0;height:78px;padding:6px 8px 16px;background:#fff;border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(4,1fr);z-index:20}
-.tabbar button{color:#9a918c;font-size:10px;font-weight:700;display:flex;flex-direction:column;align-items:center;gap:2px}
-.tabbar button svg{width:24px;height:24px}
-.tabbar button.on{color:var(--blue)}
+.tabbar{position:absolute;left:12px;right:12px;bottom:18px;height:66px;padding:5px 6px;border-radius:24px;display:grid;grid-template-columns:repeat(4,1fr);z-index:20;
+  background:rgba(255,255,255,.72);-webkit-backdrop-filter:blur(22px) saturate(1.6);backdrop-filter:blur(22px) saturate(1.6);
+  border:1px solid rgba(255,255,255,.75);box-shadow:0 10px 30px -10px #0004,0 1px 2px #0000000a,inset 0 1px 0 rgba(255,255,255,.9)}
+.tabbar:before{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;box-shadow:inset 0 0 0 1px rgba(101,30,22,.06)}
+.tabbar button{position:relative;color:#7a706c;font-size:10px;font-weight:700;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;border-radius:18px;transition:color .2s,background-color .2s}
+.tabbar button svg{width:24px;height:24px;transition:transform .2s}
+.tabbar button.on{color:var(--brand);background:rgba(172,45,30,.09)}
+.tabbar button.on svg{transform:translateY(-1px)}
+.tabbar button:hover{color:var(--brand-deep)}
+@supports not (backdrop-filter:blur(1px)){.tabbar{background:rgba(255,255,255,.96)}}
 .h1{font-size:26px;font-weight:800;letter-spacing:-.04em;line-height:1.15}
 .sub{font-size:14px;color:var(--mute);margin-top:6px;line-height:1.45}
 .hero{margin:8px 0 18px}
@@ -196,6 +202,115 @@ button,input{font-family:inherit}button{cursor:pointer;border:0;background:none}
 .mitem{justify-content:flex-start}
 .mitem .grow{flex:1;text-align:left}
 .badge-ok{color:var(--go);font-size:12px;font-weight:700}
+
+/* Главная v2 */
+.brandbar{display:flex;justify-content:space-between;align-items:center;padding:6px 0 12px}
+.brandbar .lg{color:var(--brand);width:98px;height:37px;display:block}
+.brandbar .lg svg{width:100%;height:100%;display:block}
+.pillb{height:36px;padding:0 12px 0 10px;border-radius:999px;background:#fff;font-size:12px;font-weight:800;border:1px solid var(--line);display:flex;align-items:center;gap:6px;color:var(--brand-deep)}
+.pillb svg{width:16px;height:16px}
+.wxchip{position:absolute;top:10px;left:10px;z-index:1;display:flex;align-items:center;gap:6px;background:#fff;color:var(--ink);font-size:12px;font-weight:800;padding:6px 10px 6px 8px;border-radius:999px;box-shadow:0 2px 8px #0003}
+.wxchip svg{width:16px;height:16px;color:var(--brand)}
+.wxchip small{font-weight:600;color:var(--mute)}
+.tile .cap em{font-size:11px;letter-spacing:.06em;text-transform:uppercase}
+.status{display:flex;align-items:flex-start;gap:9px;padding:2px 4px 0;margin:0 0 14px;font-size:13px;line-height:1.45;color:var(--mute)}
+.status .dot{width:8px;height:8px;border-radius:50%;background:var(--go);flex:none;margin-top:6px;box-shadow:0 0 0 3px #1a7a4c1f}
+.status b{color:var(--ink);font-weight:700}
+.status .sep{margin:0 5px;color:#c4c3bf}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:0 0 6px}
+.duo button{position:relative;height:148px;border-radius:22px;padding:14px 14px 13px;text-align:left;color:#fff;overflow:hidden;display:flex;flex-direction:column;justify-content:space-between;transition:transform .2s,opacity .2s}
+.duo button:active{transform:scale(.985)}
+.duo .sk{background:linear-gradient(160deg,#c44736 0%,var(--brand) 55%,var(--brand-deep) 100%)}
+.duo .pk{background:linear-gradient(160deg,#3a3534 0%,var(--slate) 55%,var(--ink-dark) 100%)}
+.duo .top{display:flex;justify-content:space-between;align-items:flex-start;position:relative}
+.duo .top svg{width:26px;height:26px;opacity:.95}
+.duo .num{font-family:ui-monospace,Menlo,monospace;font-size:10px;font-weight:700;letter-spacing:.06em;opacity:.7;margin-top:3px}
+.duo .bot{position:relative}
+.duo .sum{font-size:24px;font-weight:800;letter-spacing:-.04em;line-height:1;margin-bottom:5px}
+.duo .sum small{font-size:13px;font-weight:700;letter-spacing:0;opacity:.85;margin-left:2px}
+.duo b{display:block;font-size:16px;font-weight:800;letter-spacing:-.02em;line-height:1.1}
+.duo span{display:block;font-size:12px;opacity:.82;margin-top:4px;line-height:1.3}
+@media(prefers-reduced-motion:reduce){.duo button{transition:none}}
+.sec-h{display:flex;justify-content:space-between;align-items:baseline;margin:20px 4px 8px}
+.sec-h b{font-size:16px;font-weight:800;letter-spacing:-.02em}
+.sec-h button{font-size:12px;font-weight:700;color:var(--brand);padding:4px 0;min-height:28px}
+.hs{margin:0 -16px;padding:0 16px 4px;display:flex;gap:10px;overflow:auto;scroll-snap-type:x mandatory}
+.hs::-webkit-scrollbar{height:0}
+.hs>*{scroll-snap-align:start;flex:none}
+.promo{width:236px;border-radius:20px;padding:16px;color:#fff;text-align:left;position:relative;overflow:hidden;min-height:138px;display:flex;flex-direction:column;justify-content:flex-end}
+.promo .tag{position:absolute;top:12px;left:12px;font-size:10px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;background:#fff2;padding:5px 8px;border-radius:999px;backdrop-filter:blur(6px)}
+.promo .pct{position:absolute;top:8px;right:14px;font-size:34px;font-weight:800;letter-spacing:-.05em;line-height:1}
+.promo b{font-size:17px;letter-spacing:-.03em;display:block;line-height:1.15;position:relative}
+.promo span{font-size:12px;opacity:.9;display:block;margin-top:4px;line-height:1.35;position:relative}
+.promo.a{background:linear-gradient(150deg,#c44736,var(--brand-deep))}
+.promo.b{background:linear-gradient(150deg,#3a3534,var(--ink-dark))}
+.promo.c{background:linear-gradient(150deg,var(--coral),var(--brand))}
+.promo.d{background:linear-gradient(150deg,var(--brand-deep),var(--slate))}
+.list{background:#fff;border-radius:18px;padding:2px 14px;box-shadow:0 1px 3px #0000000c}
+.hr{display:flex;align-items:center;gap:10px;padding:11px 0;border-bottom:1px solid var(--line);font-size:14px;width:100%;text-align:left;min-height:44px}
+.hr:last-child{border:0}
+.hr .dot{width:8px;height:8px;border-radius:50%;background:var(--go);flex:none;box-shadow:0 0 0 3px #1a7a4c22}
+.hr .dot.off{background:#c4c3bf;box-shadow:none}
+.hr .ico{width:32px;height:32px;border-radius:10px;background:var(--wash);color:var(--brand);display:grid;place-items:center;flex:none}
+.hr .ico svg{width:17px;height:17px}
+.hr b{flex:1;font-weight:700;line-height:1.25}
+.hr b small{display:block;font-size:11px;color:var(--mute);font-weight:500;margin-top:1px}
+.hr span{color:var(--mute);font-size:13px;font-variant-numeric:tabular-nums;text-align:right;flex:none}
+.hr span.on{color:var(--ink);font-weight:700}
+.hr .chev{color:#c4c3bf;font-size:20px;margin-left:-4px}
+.svc{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.svc button{background:#fff;border-radius:16px;padding:12px 4px 10px;display:flex;flex-direction:column;align-items:center;gap:7px;box-shadow:0 1px 2px #0000000a}
+.svc .sico{width:40px;height:40px;border-radius:13px;background:var(--wash);color:var(--brand);display:grid;place-items:center}
+.svc .sico svg{width:22px;height:22px}
+.svc span{font-size:11px;font-weight:700;text-align:center;line-height:1.2}
+.feat{position:relative;border-radius:20px;overflow:hidden;height:186px;width:100%;text-align:left;color:#fff;background:#3a3534;display:block}
+.feat img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.feat .veil{position:absolute;inset:0;background:linear-gradient(180deg,#0001 20%,#000c)}
+.feat .in{position:absolute;left:14px;right:14px;bottom:14px}
+.feat .in em{font-style:normal;font-size:10px;font-weight:800;opacity:.9;text-transform:uppercase;letter-spacing:.08em}
+.feat .in b{display:block;font-size:21px;letter-spacing:-.03em;margin:3px 0 3px;line-height:1.1}
+.feat .in span{display:block;font-size:12px;opacity:.92;line-height:1.35}
+.feat .tag{position:absolute;top:12px;left:12px;background:var(--brand);font-size:11px;font-weight:800;padding:5px 9px;border-radius:999px}
+.feat .tag.dark{background:#111c;backdrop-filter:blur(6px)}
+.feat .tag.r{left:auto;right:12px}
+.room{width:196px;background:#fff;border-radius:18px;overflow:hidden;text-align:left;box-shadow:0 1px 3px #0000000c}
+.room .im{height:112px;background:#d9cfc8;position:relative}
+.room img{width:100%;height:100%;object-fit:cover;display:block}
+.room .ph{position:absolute;top:8px;right:8px;background:#0008;color:#fff;font-size:10px;font-weight:800;padding:4px 7px;border-radius:999px;backdrop-filter:blur(6px)}
+.room .in{padding:10px 12px 12px}
+.room b{display:block;font-size:14px;letter-spacing:-.02em;line-height:1.2}
+.room span{display:block;font-size:11px;color:var(--mute);margin-top:4px}
+.room .pr{font-size:12px;font-weight:800;color:var(--brand);margin-top:8px}
+.soc{display:flex;gap:8px;margin:10px 0 0}
+.soc button{width:44px;height:44px;border-radius:14px;background:#fff;display:grid;place-items:center;color:var(--brand-deep);border:1px solid var(--line)}
+.soc button svg{width:20px;height:20px}
+.soc .lbl{flex:1;display:flex;align-items:center;font-size:12px;color:var(--mute);font-weight:600;padding-left:4px}
+.foot{font-size:11px;color:var(--mute);line-height:1.6;margin:16px 4px 0}
+.foot button{color:var(--brand);font-weight:700;font-size:11px;padding:2px 0}
+.foot .sep{margin:0 5px;color:#c4c3bf}
+.panel.info{max-height:90%;overflow:auto;padding-bottom:26px}
+.panel .pimg{height:156px;border-radius:16px;overflow:hidden;margin:2px 0 12px;position:relative;background:#d9cfc8}
+.panel .pimg img{width:100%;height:100%;object-fit:cover;display:block}
+.panel .pimg .tag{position:absolute;top:10px;left:10px;background:var(--brand);color:#fff;font-size:11px;font-weight:800;padding:5px 9px;border-radius:999px}
+.panel .phead{display:flex;align-items:center;gap:12px;margin:2px 0 10px}
+.panel .phead .sico{width:48px;height:48px;border-radius:15px;background:var(--wash);color:var(--brand);display:grid;place-items:center;flex:none}
+.panel .phead .sico svg{width:26px;height:26px}
+.panel .phead .h1{font-size:22px}
+.panel .ptxt{font-size:14px;line-height:1.5;color:#3a3a38;margin:0 0 10px}
+.pl{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid var(--line);font-size:14px}
+.pl:last-child{border:0}
+.pl span{color:var(--mute)}
+.pl b{font-variant-numeric:tabular-nums;text-align:right;flex:none}
+.pl.h{padding-top:12px;font-size:12px;font-weight:800;color:var(--mute);text-transform:uppercase;letter-spacing:.06em;border:0;padding-bottom:2px}
+.rise{animation:rise .45s cubic-bezier(.2,.7,.2,1) both}
+@keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.act,.svc button,.room,.hr,.pillb,.soc button{transition:box-shadow .2s,background-color .2s,border-color .2s}
+.act:hover,.svc button:hover,.room:hover{box-shadow:0 6px 18px #0000001c}
+.pillb:hover,.soc button:hover{border-color:var(--brand);background:var(--wash)}
+.tile,.promo,.feat{transition:opacity .2s,transform .2s}
+.tile:active,.promo:active,.feat:active{opacity:.92}
+button:focus-visible{outline:2px solid var(--brand);outline-offset:2px}
+@media(prefers-reduced-motion:reduce){.rise{animation:none}.act,.svc button,.room,.tile,.promo,.feat{transition:none}}
 @media(max-width:980px){.page{grid-template-columns:1fr}.stage{position:relative;height:auto}}
 </style>
 </head>
@@ -209,6 +324,9 @@ button,input{font-family:inherit}button{cursor:pointer;border:0;background:none}
       <button onclick="run('home')">Главная</button>
       <button onclick="run('step')">Степаново</button>
       <button onclick="run('way')">Как доехать</button>
+      <button onclick="run('promo')">Акция</button>
+      <button onclick="run('svc')">Услуга</button>
+      <button onclick="run('room')">Номер</button>
       <button onclick="run('you')">Профиль</button>
       <button onclick="run('name')">Имя</button>
       <button onclick="run('email')">Почта</button>
@@ -240,23 +358,29 @@ button,input{font-family:inherit}button{cursor:pointer;border:0;background:none}
 </div>
 <script>
 const IMG={
-  volen:"https://images.unsplash.com/photo-1605540436563-5bca91957098?auto=format&fit=crop&w=1200&q=70",
+  volen:"https://images.unsplash.com/photo-1486078695445-0497c2f58cfe?auto=format&fit=crop&w=1200&q=70",
   step:"https://images.unsplash.com/photo-1551698618-1dfe5d97d256?auto=format&fit=crop&w=1200&q=70",
   night:"https://images.unsplash.com/photo-1418985991508-e47386d96a71?auto=format&fit=crop&w=1000&q=70",
   lot:"https://images.unsplash.com/photo-1506521781263-d8422e82f27a?auto=format&fit=crop&w=1000&q=70",
   lodge:"https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=1000&q=70",
-  lift:"https://images.unsplash.com/photo-1453945619913-79ec89a82c51?auto=format&fit=crop&w=1000&q=70",
+  lift:"https://images.unsplash.com/photo-1565992441121-4367c2967103?auto=format&fit=crop&w=1000&q=70",
   village:"https://images.unsplash.com/photo-1483921020237-2ff51e8f4a42?auto=format&fit=crop&w=1000&q=70",
   peak:"https://images.unsplash.com/photo-1519904981063-b0cf448d479e?auto=format&fit=crop&w=1000&q=70",
   ski:"https://images.unsplash.com/photo-1551524559-8af4e6624178?auto=format&fit=crop&w=1000&q=70",
   alpine:"https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=1000&q=70",
   forest:"https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1000&q=70",
-  cabin:"https://images.unsplash.com/photo-1517824806704-9040b037703b?auto=format&fit=crop&w=1000&q=70"
+  cabin:"https://images.unsplash.com/photo-1517824806704-9040b037703b?auto=format&fit=crop&w=1000&q=70",
+  rest:"https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1000&q=70",
+  room:"https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?auto=format&fit=crop&w=800&q=70",
+  suite:"https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=800&q=70",
+  ny:"https://images.unsplash.com/photo-1482517967863-00e15c9b44be?auto=format&fit=crop&w=1000&q=70",
+  pool:"https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?auto=format&fit=crop&w=1000&q=70"
 };
+const LOGO=`<svg viewBox="0 0 122 46" fill="none" role="img" aria-label="Волен · спортивный парк"><path d="M87.00 25.49H97.17V20.52H87.00V14.81H97.71V9.84H80.80V36.91H98.24V31.94H87.00V25.49Z" fill="currentColor"/><path d="M105.52 25.59H115.79V36.91H122V9.84H115.79V20.20H105.52V9.84H99.31V36.91H105.52V25.59Z" fill="currentColor"/><path d="M79.62 36.91L71.16 9.62H62.92L54.47 36.91H61.00L66.99 17.66L72.98 36.91H79.62Z" fill="currentColor"/><path d="M41.31 37.22C41.84 37.33 42.38 37.33 43.02 37.33C51.05 37.33 56.50 31.94 56.50 23.05C56.50 15.65 51.90 9.31 43.45 9.31C35.42 9.31 30.07 15.34 30.07 23.48C30.07 28.45 32.00 32.68 35.53 35.11C32.96 34.48 30.39 33.42 27.93 32.36C28.46 31.20 28.79 30.03 28.79 28.77C28.79 26.44 27.82 24.22 26.11 22.74C26.00 22.63 25.90 22.53 25.68 22.42C25.68 22.42 25.68 22.42 25.58 22.31C25.47 22.21 25.47 22.21 25.36 22.21C24.61 21.57 23.65 21.15 22.79 20.83C25.58 19.88 26.97 17.24 26.97 14.28C26.97 10.47 23.76 7.30 19.90 7.30H12.41H9.31H7.49C8.45 5.71 12.20 0.42 20.87 0.53C21.83 0.53 21.08 0.11 20.55 0.11C18.73 0.11 16.59 0.21 14.66 0.64C12.95 1.06 11.77 1.59 11.34 1.80C10.59 2.01 9.95 2.43 9.31 2.86C3.74 6.88 2.35 14.28 7.17 20.41C8.88 22.63 10.7 24.43 12.52 26.02V23.69H17.01C19.15 23.69 20.87 25.38 20.87 27.50V28.02C20.87 29.29 20.22 30.35 19.26 31.09C22.9 33.31 25.58 34.37 26.43 34.58C26.43 34.58 26.43 34.58 26.54 34.48L20.44 30.77C20.44 30.88 31.68 36.59 41.31 37.22ZM43.34 14.28C47.62 14.28 49.98 18.40 49.98 23.27C49.98 28.55 47.62 32.47 43.34 32.47C39.17 32.47 36.71 28.66 36.71 23.48C36.71 18.19 39.06 14.28 43.34 14.28ZM16.26 19.46H12.63V11.85H16.26C18.41 11.85 20.12 13.54 20.12 15.65C20.12 17.77 18.41 19.46 16.26 19.46Z" fill="currentColor"/><path d="M3.86 29.51V37.23H11.99C8.99 35.43 6.64 33.31 3.86 29.51Z" fill="currentColor"/><path d="M13.06 0.43C12.95 0.32 12.84 0.32 12.84 0.21C2.46 2.75 0 9.31 0 9.52C0.43 9.20 3.00 7.93 3.21 7.83C6.31 2.75 9.95 1.59 13.06 0.43Z" fill="currentColor"/><path d="M40.35 40.93C39.81 41.46 39.60 42.20 39.60 43.04C39.60 43.99 39.81 44.73 40.35 45.26C40.88 45.79 41.52 46.00 42.38 46.00C42.59 46.00 42.92 46.00 43.13 45.90C43.45 45.79 43.77 45.69 44.31 45.47V44.63C43.99 44.95 43.66 45.16 43.34 45.26C43.02 45.37 42.70 45.37 42.38 45.37C41.74 45.37 41.31 45.16 40.99 44.73C40.67 44.31 40.45 43.78 40.45 43.04C40.45 42.30 40.67 41.77 40.99 41.35C41.31 40.93 41.84 40.72 42.38 40.72C43.02 40.72 43.66 40.93 44.31 41.46V40.61C43.66 40.29 43.02 40.08 42.38 40.08C41.52 40.19 40.88 40.40 40.35 40.93Z" fill="currentColor"/><path d="M45.38 45.90H46.12V40.82H49.12V45.90H49.76V40.29H45.38V45.90Z" fill="currentColor"/><path d="M53.72 40.08C52.87 40.08 52.22 40.29 51.80 40.82C51.37 41.35 51.05 42.09 51.05 43.04C51.05 43.99 51.26 44.73 51.80 45.26C52.22 45.79 52.87 46.00 53.72 46.00C54.58 46.00 55.22 45.79 55.65 45.26C56.08 44.73 56.40 43.99 56.40 43.04C56.40 42.09 56.18 41.35 55.65 40.82C55.11 40.40 54.47 40.08 53.72 40.08ZM55.11 44.84C54.79 45.26 54.36 45.47 53.72 45.47C53.08 45.47 52.65 45.26 52.33 44.84C52.01 44.42 51.80 43.89 51.80 43.15C51.80 42.41 52.01 41.77 52.33 41.46C52.65 41.03 53.08 40.82 53.72 40.82C54.36 40.82 54.79 41.03 55.11 41.46C55.43 41.88 55.65 42.41 55.65 43.25C55.54 43.89 55.43 44.42 55.11 44.84Z" fill="currentColor"/><path d="M59.18 40.29H57.58V46.00H58.33V43.89H59.18C59.93 43.89 60.47 43.68 60.79 43.36C61.22 43.04 61.32 42.62 61.32 41.98C61.32 41.45 61.11 41.03 60.79 40.71C60.47 40.40 59.93 40.29 59.18 40.29ZM60.25 42.83C60.04 43.04 59.61 43.15 58.97 43.15H58.22V40.82H59.08C59.61 40.82 59.93 40.93 60.25 41.14C60.47 41.35 60.57 41.56 60.57 41.98C60.57 42.30 60.47 42.62 60.25 42.83Z" fill="currentColor"/><path d="M61.86 40.82H63.89V45.90H64.53V40.82H66.56V40.29H61.86V40.82Z" fill="currentColor"/><path d="M68.27 44.84V40.29H67.63V45.90H68.27L71.27 41.24V45.90H71.91V40.29H71.16L68.27 44.84Z" fill="currentColor"/><path d="M76.62 42.72C77.16 42.41 77.37 41.98 77.37 41.56C77.37 41.35 77.37 41.24 77.27 41.03C77.16 40.93 77.05 40.71 76.94 40.61C76.84 40.50 76.62 40.40 76.41 40.40C76.19 40.29 75.98 40.29 75.87 40.29C75.66 40.29 75.45 40.29 75.23 40.29H73.52V46.00H75.55C76.30 46.00 76.84 45.90 77.27 45.58C77.69 45.26 77.91 44.84 77.91 44.31C77.91 43.89 77.80 43.57 77.59 43.36C77.27 42.94 76.94 42.83 76.62 42.72ZM74.27 40.82H75.23C75.87 40.82 76.30 40.93 76.41 41.03C76.52 41.14 76.62 41.35 76.62 41.56C76.62 41.88 76.52 42.09 76.30 42.30C76.09 42.41 75.77 42.51 75.23 42.51H74.16V40.82H74.27ZM76.73 45.05C76.52 45.26 75.98 45.37 75.23 45.37H74.16V43.15H75.34C75.87 43.15 76.19 43.15 76.41 43.25C76.62 43.36 76.73 43.46 76.84 43.68C76.94 43.78 76.94 43.99 76.94 44.20C77.05 44.52 76.94 44.84 76.73 45.05Z" fill="currentColor"/><path d="M82.73 42.51H79.73V40.29H78.98V45.90H79.73V43.15H82.73V45.90H83.37V40.29H82.73V42.51Z" fill="currentColor"/><path d="M89.89 40.29H90.64V46.00H89.89V40.29Z" fill="currentColor"/><path d="M87.11 42.51H85.83V40.29H85.08V46.00H87.11C87.86 46.00 88.40 45.90 88.72 45.58C89.14 45.26 89.25 44.84 89.25 44.31C89.25 43.78 89.04 43.36 88.72 43.04C88.40 42.62 87.86 42.51 87.11 42.51ZM88.18 45.05C87.97 45.26 87.43 45.37 86.79 45.37H85.72V43.15H86.79C87.22 43.15 87.54 43.15 87.75 43.25C87.97 43.25 88.07 43.46 88.29 43.57C88.40 43.78 88.50 43.99 88.50 44.31C88.50 44.52 88.40 44.84 88.18 45.05Z" fill="currentColor"/><path d="M93.00 44.84V40.29H92.25V45.90H93.00L95.89 41.24V45.90H96.64V40.29H95.78L93.00 44.84Z" fill="currentColor"/><path d="M101.02 45.90H101.77V40.82H104.77V45.90H105.52V40.29H101.02V45.90Z" fill="currentColor"/><path d="M108.62 40.29L106.48 46.00H107.23L107.88 44.42H110.34L110.98 46.00H111.73L109.59 40.29H108.62ZM107.98 43.68L109.05 40.82L110.12 43.68H107.98Z" fill="currentColor"/><path d="M114.19 40.29H112.58V46.00H113.33V43.89H114.19C114.94 43.89 115.47 43.68 115.79 43.36C116.22 43.04 116.33 42.62 116.33 41.98C116.33 41.45 116.11 41.03 115.79 40.71C115.47 40.40 114.94 40.29 114.19 40.29ZM115.26 42.83C115.04 43.04 114.61 43.15 113.97 43.15H113.22V40.82H114.08C114.61 40.82 114.94 40.93 115.26 41.14C115.47 41.35 115.58 41.56 115.58 41.98C115.58 42.30 115.47 42.62 115.26 42.83Z" fill="currentColor"/><path d="M119.33 42.94C119.54 42.83 119.75 42.62 119.97 42.41C120.08 42.20 120.18 41.98 120.29 41.67C120.40 41.35 120.50 41.03 120.72 40.93C120.83 40.82 121.04 40.72 121.36 40.72H121.68V40.08H121.47C121.04 40.08 120.72 40.19 120.50 40.29C120.29 40.50 120.08 40.72 119.86 41.24C119.65 41.67 119.54 41.88 119.54 41.98C119.43 42.09 119.43 42.20 119.33 42.30C119.22 42.41 119.11 42.51 118.90 42.51C118.79 42.62 118.58 42.62 118.26 42.62V40.08H117.51V45.79H118.26V43.36H118.90L121.25 46.00H122.22L119.33 42.94Z" fill="currentColor"/></svg>`;
 const GALLERY={
   volen:[
     {src:IMG.volen,cap:"Склоны парка Волен",sub:"Яхрома · основной курорт"},
-    {src:IMG.lift,cap:"Канатная дорога",sub:"Подъём на учебный склон"},
+    {src:IMG.lift,cap:"Сноупарк",sub:"Трамплины и фигуры"},
     {src:IMG.night,cap:"Вечерняя подсветка",sub:"Пятница, с 18:00"},
     {src:IMG.lodge,cap:"Гостиница и шале",sub:"Парк-отель у склона"},
     {src:IMG.village,cap:"Территория парка",sub:"Зима, после снегопада"},
@@ -297,8 +421,107 @@ const ic={
   back:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5 8 12l7 7"/></svg>`,
   check:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5 10 17.5 19 7"/></svg>`,
   lock:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="10" rx="2.2"/><path d="M8 11V8.2a4 4 0 0 1 8 0V11"/></svg>`,
-  offer:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M14.2 3.8 20.2 9.8 10.6 19.4a2.4 2.4 0 0 1-1.7.7H4.8v-4.1a2.4 2.4 0 0 1 .7-1.7L14.2 3.8Z"/><path d="M12.6 5.4 18.6 11.4"/><circle cx="8.2" cy="15.8" r="1"/></svg>`
+  offer:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M14.2 3.8 20.2 9.8 10.6 19.4a2.4 2.4 0 0 1-1.7.7H4.8v-4.1a2.4 2.4 0 0 1 .7-1.7L14.2 3.8Z"/><path d="M12.6 5.4 18.6 11.4"/><circle cx="8.2" cy="15.8" r="1"/></svg>`,
+  snow:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M4.2 7.5l15.6 9M4.2 16.5l15.6-9"/><path d="m9.6 4.6 2.4 1.6 2.4-1.6M9.6 19.4l2.4-1.6 2.4 1.6M4.4 10.6l2.4-1.4.2-2.8M19.6 13.4l-2.4 1.4-.2 2.8M4.4 13.4l2.4 1.4.2 2.8M19.6 10.6l-2.4-1.4-.2-2.8"/></svg>`,
+  lift:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6.4 21 3.6"/><path d="M12 5.2v3.2"/><rect x="7.6" y="8.4" width="8.8" height="8.4" rx="2.2"/><path d="M7.6 12.4h8.8M10.4 16.8v3.4M13.6 16.8v3.4"/></svg>`,
+  bike:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="16" r="3.4"/><circle cx="18" cy="16" r="3.4"/><path d="M6 16l3.2-7h5.2l3.6 7"/><path d="M9.2 9h-2M14.4 9l-1-3h2.6"/><path d="M9.2 9 12 16"/></svg>`,
+  sauna:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M7.5 3.8c-1.4 1.6-1.4 2.8 0 4.4 1.3 1.5 1.3 2.6 0 4.2M12 3.8c-1.4 1.6-1.4 2.8 0 4.4 1.3 1.5 1.3 2.6 0 4.2M16.5 3.8c-1.4 1.6-1.4 2.8 0 4.4 1.3 1.5 1.3 2.6 0 4.2"/><path d="M4 16.4h16M5.2 16.4l.8 4h12l.8-4"/></svg>`,
+  pool:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 15.2c1.6 0 1.6 1.4 3.2 1.4s1.6-1.4 3.2-1.4 1.6 1.4 3.2 1.4 1.6-1.4 3.2-1.4 1.6 1.4 3.2 1.4"/><path d="M3 19.2c1.6 0 1.6 1.4 3.2 1.4s1.6-1.4 3.2-1.4 1.6 1.4 3.2 1.4 1.6-1.4 3.2-1.4 1.6 1.4 3.2 1.4"/><path d="M8 13V5.4a1.8 1.8 0 0 1 3.6 0V7M15 13V5.4a1.8 1.8 0 0 0-3.6 0V7"/><path d="M8 8.6h7M8 11.4h7"/></svg>`,
+  fish:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 12c2.6-4 6.4-6 10.2-6 2.8 0 5.2 1.4 7 3.6-1.8 2.2-4.2 3.6-7 3.6-3.8 0-7.6-2-10.2-6"/><path d="M3.4 12c1.4 1.6 3 2.8 4.6 3.6M20.6 9.6l-1.4 5.2-3.2-2.4"/><circle cx="15.6" cy="9.4" r=".9" fill="currentColor" stroke="none"/></svg>`,
+  fire:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.2c.8 2.6 3.2 4 4.4 6.4 1.6 3.2.6 7.4-2.8 9.2-2.4 1.2-5.4.6-7-1.4-2.2-2.8-1.4-6.4.8-8.6 0 1.8 1 2.8 2 3.2-.6-3 .6-6.2 2.6-8.8Z"/><path d="M12 20.8c1.8-.6 2.8-2.2 2.4-4"/></svg>`,
+  kid:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12.6" r="7"/><circle cx="6.2" cy="7" r="2"/><circle cx="17.8" cy="7" r="2"/><circle cx="9.6" cy="11.4" r=".9" fill="currentColor" stroke="none"/><circle cx="14.4" cy="11.4" r=".9" fill="currentColor" stroke="none"/><path d="M9.4 15c1.4 1.4 3.8 1.4 5.2 0"/></svg>`,
+  bell:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 16.6h16"/><path d="M5 16.6a7 7 0 0 1 14 0"/><path d="M12 9.6V7.2"/><circle cx="12" cy="6" r="1.2"/><path d="M3.4 19.6h17.2"/></svg>`,
+  video:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="12.4" height="10" rx="2.4"/><path d="m15.4 10.4 5.2-2.6v8.4l-5.2-2.6"/><circle cx="7.2" cy="11" r="1" fill="currentColor" stroke="none"/></svg>`,
+  spark:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.6 13.9 9.4 19.8 11.3 13.9 13.2 12 19 10.1 13.2 4.2 11.3 10.1 9.4 12 3.6Z"/><path d="M19 3.4v3M17.5 4.9h3M5 17.4v3M3.5 18.9h3"/></svg>`,
+  fork:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3.6v6a2.4 2.4 0 0 0 4.8 0v-6M9.4 3.6v16.8"/><path d="M17.4 3.6c-1.6.8-2.6 3-2.6 6.4 0 1.4.6 2.2 1.6 2.6v7.8M17.4 3.6v9"/></svg>`,
+  bed:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18.6v-8.2a2.4 2.4 0 0 1 2.4-2.4h13.2A2.4 2.4 0 0 1 21 10.4v8.2"/><path d="M3 14.4h18M3 18.6v1.6M21 18.6v1.6"/><path d="M6.2 8V6.2A1.6 1.6 0 0 1 7.8 4.6h8.4a1.6 1.6 0 0 1 1.6 1.6V8"/><path d="M7 11.2h4M13 11.2h4"/></svg>`,
+  cal:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3.4" y="5" width="17.2" height="15.4" rx="2.4"/><path d="M3.4 9.8h17.2M8 3.4v3.2M16 3.4v3.2"/><path d="M7.6 13.4h2.4M11.8 13.4h2.4M16 13.4h1M7.6 16.8h2.4M11.8 16.8h2.4"/></svg>`,
+  car:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 13.2 5.8 8.4A2 2 0 0 1 7.7 7h8.6a2 2 0 0 1 1.9 1.4L20 13.2"/><rect x="3" y="13.2" width="18" height="5.4" rx="1.8"/><circle cx="7.2" cy="18.8" r="1.6"/><circle cx="16.8" cy="18.8" r="1.6"/><path d="M6.6 15.9h1.6M15.8 15.9h1.6"/></svg>`,
+  train:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3.6" width="14" height="13.4" rx="3"/><path d="M5 10.4h14"/><circle cx="8.8" cy="13.6" r="1" fill="currentColor" stroke="none"/><circle cx="15.2" cy="13.6" r="1" fill="currentColor" stroke="none"/><path d="m8 17-1.8 3.4M16 17l1.8 3.4M6.8 20.4h10.4"/></svg>`,
+  bus:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3.6" y="4.4" width="16.8" height="13" rx="2.6"/><path d="M3.6 11h16.8M7.2 4.4v6.6M12 4.4v6.6M16.8 4.4v6.6"/><circle cx="7.6" cy="14.4" r="1" fill="currentColor" stroke="none"/><circle cx="16.4" cy="14.4" r="1" fill="currentColor" stroke="none"/><path d="M6.4 17.4v2.2M17.6 17.4v2.2"/></svg>`,
+  clock:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.4"/><path d="M12 7.4V12l3 2"/></svg>`,
+  ext:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg>`,
+  tg:`<svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.6 4.2 3.4 10.8c-1 .4-1 1 0 1.3l4.3 1.4 1.7 5.2c.2.6.4.8.8.8.4 0 .6-.2 1-.6l2.4-2.3 4.8 3.5c.9.5 1.5.2 1.7-.8l3.1-14.6c.3-1.3-.5-1.9-1.6-1.5ZM9.3 12.9l8.8-5.5c.4-.3.8-.1.5.2L11.3 14l-.3 3-1.7-4.1Z"/></svg>`,
+  vk:`<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.8 18.6C6 18.6 2.2 14 2 6.2h3.4c.1 5.7 2.6 8.1 4.6 8.6V6.2h3.2v4.9c2-.2 4-2.4 4.7-4.9h3.2c-.5 3-2.8 5.3-4.4 6.2 1.6.7 4.2 2.7 5.2 6.2h-3.5c-.8-2.4-2.7-4.3-5.2-4.6v4.6h-.4Z"/></svg>`,
+  wa:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4.2 20.2l1.3-4.2A8.6 8.6 0 1 1 8.6 19l-4.4 1.2Z"/><path d="M9.2 8.8c0 3.2 2.8 6 6 6l.9-1.5-1.9-1-.9.9c-1.1-.4-2.1-1.4-2.5-2.5l.9-.9-1-1.9-1.5.9Z"/></svg>`
 };
+/* Справочник для главной: снято с volen.ru, зима */
+const PARK_PHONE_REST="+7 (495) 993-91-99";
+const HOME={
+  volen:{
+    wx:{t:"−7°",s:"снег",w:"ветер 3 м/с"},
+    status:{open:"Открыто до 22:00",l1:"12 склонов · 8 подъёмников",l2:"Пятница: вечерняя подсветка с 18:00"},
+    hours:[
+      {ic:"lift",n:"Подъёмники и склоны",h:"09:00–22:00",sub:"пт подсветка с 18:00",a:9,b:22},
+      {ic:"bed",n:"Гостиница",h:"круглосуточно",a:0,b:24},
+      {ic:"fork",n:"Ресторан «Волен»",h:"10:00–23:00",a:10,b:23},
+      {ic:"bike",n:"Прокат",h:"10:00–23:00",sub:"выдача оборудования до 17:00",a:10,b:23},
+      {ic:"pool",n:"Бассейн",h:"10:00–23:00",a:10,b:23},
+      {ic:"kid",n:"Детская комната",h:"10:00–23:00",a:10,b:23}
+    ],
+    svc:["rent","sauna","pool","fish","bbq","kids","room","cam"],
+    hasRest:true, hasHotel:true
+  },
+  step:{
+    wx:{t:"−8°",s:"снег",w:"ветер 4 м/с"},
+    status:{open:"Открыто до 22:00",l1:"8 склонов · 5 подъёмников",l2:"Шаттл из Волена: 4 рейса, по заявке"},
+    hours:[
+      {ic:"lift",n:"Подъёмники и склоны",h:"09:00–22:00",a:9,b:22},
+      {ic:"bike",n:"Прокат",h:"09:00–21:00",sub:"в шале у склона",a:9,b:21},
+      {ic:"fork",n:"Кафе в шале",h:"10:00–22:00",a:10,b:22},
+      {ic:"park",n:"Парковка",h:"круглосуточно",sub:"въезд по карте",a:0,b:24},
+      {ic:"bus",n:"Шаттл в Волен",h:"12:05 · 13:30 · 15:00 · 16:00",sub:"по заявке",a:12,b:16}
+    ],
+    svc:["rent","kids","bbq","cam","sauna","pool","fish","room"],
+    hasRest:false, hasHotel:false
+  }
+};
+const PROMOS=[
+  {id:"secret",cls:"a",tag:"до 30.09",pct:"−50%",t:"Секретный тариф",s:"на ски-пассы нового сезона",
+   d:"Ски-пассы зимы 2026/27 по летней цене. Действует при покупке до 30 сентября.",
+   rows:[["Разовый, будни","от 35 ₽"],["Безлимит 24 ч","2 490 ₽"],["Сезонный","по запросу"],["Парки","Волен и Степаново"]],cta:"Купить на volen.ru"},
+  {id:"long",cls:"b",tag:"проживание",pct:"−15%",t:"Длительное проживание",s:"бронируйте от 3 дней",
+   d:"Скидка 15% на проживание в гостинице и шале при бронировании от трёх ночей.",
+   rows:[["Минимум","3 ночи"],["Номера","все категории"],["Ски-пасс","не включён"]],cta:"Забронировать"},
+  {id:"bday",cls:"c",tag:"промокод HAPPY15",pct:"−15%",t:"Скидка на день рождения",s:"неделя до и после даты",
+   d:"Назовите промокод HAPPY15 при бронировании и покажите паспорт на ресепшене.",
+   rows:[["Промокод","HAPPY15"],["Срок","±7 дней от даты"],["Что","проживание и ресторан"]],cta:"Забронировать"},
+  {id:"early",cls:"d",tag:"раннее бронирование",pct:"",t:"Планируйте заранее",s:"скидка на проживание и ски-пассы",
+   d:"Чем раньше бронь — тем ниже цена. Выгодные даты открываются за 60 дней.",
+   rows:[["За 60 дней","−20%"],["За 30 дней","−10%"],["Новый год","бронирование открыто"]],cta:"Смотреть даты"}
+];
+const SVC={
+  rent:{ic:"bike",n:"Прокат",d:"Лыжи, сноуборды, ботинки, шлемы и защита. Летом — велосипеды, ролики, веломобили. Выдача оборудования до 17:00.",
+    rows:[["Комплект лыжи/борд","от 1 200 ₽ · день"],["Шлем","190 ₽ · час"],["Защита","190 ₽ · час"],["Залог","от 6 500 ₽"]]},
+  sauna:{ic:"sauna",n:"Банный комплекс",d:"Финская сауна и русская баня у склона. Купель, зона отдыха, чай. Бронь по телефону.",
+    rows:[["Сауна","от 2 500 ₽ · час"],["Баня","от 3 500 ₽ · час"],["Часы","10:00–23:00"]]},
+  pool:{ic:"pool",n:"Бассейн",d:"Крытый бассейн в гостинице, 25 м. Гостям отеля — бесплатно, остальным по билету.",
+    rows:[["Гостям отеля","включено"],["Разовый","от 900 ₽"],["Часы","10:00–23:00"]]},
+  fish:{ic:"fish",n:"Рыбалка",d:"Зарыбленный пруд на территории. Снасти в прокате, улов можно приготовить на мангале.",
+    rows:[["Путёвка","от 1 500 ₽"],["Снасти","прокат"],["Сезон","круглый год"]]},
+  bbq:{ic:"fire",n:"Зоны барбекю",d:"Беседки с мангалом на 6–12 человек. Дрова и уголь на месте.",
+    rows:[["Беседка","от 3 000 ₽ · 3 ч"],["Уголь, дрова","на месте"],["Бронь","по телефону"]]},
+  kids:{ic:"kid",n:"Детям",d:"Детская комната с аниматором, учебный склон с ковровым подъёмником, детские инструкторы.",
+    rows:[["Детская комната","10:00–23:00"],["Учебный склон","в стоимости ски-пасса"],["Инструктор","от 2 500 ₽ · час"]]},
+  room:{ic:"bell",n:"Рум сервис",d:"Завтраки и ужины в номер из ресторана «Волен». Заказ через ресепшен.",
+    rows:[["Часы","10:00–23:00"],["Телефон",PARK_PHONE_REST]]},
+  cam:{ic:"video",n:"Live камеры",d:"Камеры на склонах и парковке. Смотрите очередь на подъёмник и погоду перед выездом.",
+    rows:[["Камер","6"],["Обновление","онлайн"]]},
+  anim:{ic:"spark",n:"Анимация",d:"Программы для детей и взрослых по выходным и в праздники.",rows:[["Когда","сб, вс, праздники"]]}
+};
+const ROOMS=[
+  {id:"std",t:"Альпийский стандарт",m:"18–26 м²",p:"2–3 гостя",bed:"две односпальные",ph:5,img:IMG.room,d:"Стандартный однокомнатный номер около 19 м² для комфортного размещения двух человек."},
+  {id:"cmf",t:"Альпийский комфорт",m:"20–24 м²",p:"2–3 гостя",bed:"две односпальные",ph:7,img:IMG.suite,d:"Светлый двухместный номер около 20 м², окна на склон."},
+  {id:"fam",t:"Семейный сьют",m:"30 м²",p:"до 4 гостей",bed:"разные типы",ph:6,img:IMG.room,d:"Просторная комната с холлом для отдыха. Для семьи из двух–четырёх человек."},
+  {id:"two",t:"Двухкомнатный сьют",m:"60 м²",p:"до 6 гостей",bed:"разные типы",ph:8,img:IMG.suite,d:"Две комнаты, гостиная и спальня. Для компании или большой семьи."},
+  {id:"cha",t:"Шале",m:"25 м²",p:"до 4 гостей",bed:"разные типы",ph:4,img:IMG.lodge,d:"Однокомнатный деревянный домик у леса."},
+  {id:"chs",t:"Шале с сауной",m:"26–28 м²",p:"до 4 гостей",bed:"разные типы",ph:5,img:IMG.forest,d:"Деревянный домик с собственной сауной."}
+];
+const EVENTS=[
+  {id:"ny",tag:"31 дек – 2 янв",age:"0+",t:"Новый год в «Волене»",s:"Праздник на склоне, банкет, салют. Бронирование открыто.",img:IMG.ny,
+   rows:[["Даты","31 декабря – 2 января"],["Возраст","0+"],["Банкет","ресторан «Волен»"],["Проживание","в стоимости пакета"]]}
+];
+const CONTACTS={phone:PHONE_PARK,mail:"info@volen.ru",addr:"141840, Московская обл., Дмитров, Яхрома, ул. Троицкая, 1"};
 const AV=[
   "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=400&q=70",
   "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&q=70",
@@ -315,7 +538,8 @@ const state={
   resort:"volen", amount:3000, guestSkip:null, guestPark:null, guestOk:{skip:false,park:false},
   skip:{id:"12", masked:"4001 ···· 3838", rub:3240, bonus:1180},
   park:{id:"p2", masked:"E004 ···· 0539", rub:400, park:"Волен"},
-  fails:0, lockUntil:0, txShown:{skip:3,park:3}, galI:0
+  fails:0, lockUntil:0, txShown:{skip:3,park:3}, galI:0,
+  info:null, anim:true, hour:16
 };
 const CARD={skip:"40013838",park:"e0040539"};
 const TX={
@@ -399,50 +623,181 @@ function screenHome(){
   if(state.view==="way") return viewWay();
   if(state.view==="gallery") return viewGallery();
   const v=state.resort==="volen";
-  const skipHint=hasSkip()?rub(state.skip.rub):"Пополнить по номеру";
-  const parkHint=hasPark()?rub(state.park.rub):"Тариф и карта на въезд";
   const g=GALLERY[state.resort];
-  return `<div class="tophead">
-      <div class="logo">${v?"ВОЛЕН":"СТЕПАНОВО"}</div>
+  const R=HOME[state.resort];
+  let k=0;
+  const rise=()=>state.anim?` rise" style="animation-delay:${(k++)*45}ms`:"";
+  const isOpen=h=>state.hour>=h.a&&state.hour<h.b;
+  const openN=R.hours.filter(isOpen).length;
+  const ev=EVENTS[0];
+  return `<div class="brandbar${rise()}">
+      <span class="lg">${LOGO}</span>
+      <button class="pillb" onclick="toast(PHONE_PARK)" aria-label="Позвонить в парк">${ic.phone}Позвонить</button>
     </div>
-    ${tog()}
-    <div class="mosaic">
-      <button class="tile" onclick="openGal(0)">
-        <img src="${g[0].src}" alt="">
+    <div class="${rise()}">${tog()}</div>
+    <div class="mosaic${rise()}">
+      <button class="tile" onclick="openGal(0)" aria-label="Открыть галерею">
+        <img src="${g[0].src}" alt="Склоны парка ${rname()}">
         <div class="veil"></div>
-        <span class="gal-chip">${ic.pics}${g.length} фото</span>
-        <div class="cap"><em>сегодня · ${v?"−7° · снег":"−8° · снег"}</em><b>Парк ${rname()}</b></div>
+        <span class="wxchip">${ic.snow}${R.wx.t} <small>· ${R.wx.s}</small></span>
+        <div class="cap"><em>сегодня · ${R.wx.w}</em><b>Парк ${rname()}</b></div>
       </button>
       <div class="mosaic-side">
-        <button class="tile" onclick="openGal(1)"><img src="${g[1].src}" alt=""></button>
-        <button class="tile" onclick="openGal(2)">
-          <img src="${g[2].src}" alt="">
-          <span class="gal-chip">ещё ${g.length-3}</span>
+        <button class="tile" onclick="openGal(1)" aria-label="Фото 2"><img src="${g[1].src}" alt="${g[1].cap}"></button>
+        <button class="tile" onclick="openGal(2)" aria-label="Ещё фото">
+          <img src="${g[2].src}" alt="${g[2].cap}">
+          <span class="gal-chip">${ic.pics}${g.length} фото</span>
         </button>
       </div>
     </div>
-    <div class="facts">
-      <i>09:00–22:00<small>сегодня открыто</small></i>
-      <i>${v?"12":"8"} склонов<small>сезон открыт</small></i>
-      <i>${v?"ночь пт":"шаттл"}<small>${v?"подсветка 18:00":"4 рейса, по заявке"}</small></i>
+    <div class="status${rise()}">
+      <span class="dot" aria-hidden="true"></span>
+      <div><b>${R.status.open}</b><span class="sep">·</span>${R.status.l1}<br>${R.status.l2}</div>
     </div>
-    <button class="act skip" onclick="go('skip')">
-      <div class="ico">${ic.skip}</div>
-      <div><b>Ски-пасс</b><span>${skipHint}</span></div>
-      <div class="chev">›</div>
+    <div class="duo${rise()}">
+      <button class="sk" onclick="go('skip')">
+        <div class="top">${ic.skip}${hasSkip()?`<span class="num">${state.skip.masked}</span>`:""}</div>
+        <div class="bot">
+          ${hasSkip()?`<div class="sum">${state.skip.rub.toLocaleString("ru-RU")}<small>₽</small></div><b>Ски-пасс</b><span>бонусы ${rub(state.skip.bonus)}</span>`
+          :`<b>Ски-пасс</b><span>Баланс и пополнение<br>по номеру карты</span>`}
+        </div>
+      </button>
+      <button class="pk" onclick="go('park')">
+        <div class="top">${ic.park}${hasPark()?`<span class="num">${state.park.masked}</span>`:""}</div>
+        <div class="bot">
+          ${hasPark()?`<div class="sum">${state.park.rub.toLocaleString("ru-RU")}<small>₽</small></div><b>Парковка</b><span>${v?"200–300 ₽ в день":"300–400 ₽ в день"}</span>`
+          :`<b>Парковка</b><span>${v?"200–300 ₽ в день<br>15 минут бесплатно":"300–400 ₽ в день<br>въезд по карте"}</span>`}
+        </div>
+      </button>
+    </div>
+
+    <div class="sec-h${rise()}"><b>Акции</b><button onclick="toast('volen.ru/akcii')">Все акции</button></div>
+    <div class="hs${rise()}">
+      ${PROMOS.map(p=>`<button class="promo ${p.cls}" onclick="openInfo('promo','${p.id}')">
+        <span class="tag">${p.tag}</span>${p.pct?`<span class="pct">${p.pct}</span>`:""}
+        <b>${p.t}</b><span>${p.s}</span>
+      </button>`).join("")}
+    </div>
+
+    <div class="sec-h${rise()}"><b>Расписание работы</b><span class="badge-ok">открыто ${openN} из ${R.hours.length}</span></div>
+    <div class="list${rise()}">
+      ${R.hours.map(h=>`<div class="hr">
+        <span class="dot${isOpen(h)?"":" off"}" aria-hidden="true"></span>
+        <b>${h.n}${h.sub?`<small>${h.sub}</small>`:""}</b>
+        <span class="${isOpen(h)?"on":""}">${h.h}</span>
+      </div>`).join("")}
+    </div>
+
+    <div class="sec-h${rise()}"><b>Услуги</b><button onclick="openInfo('svc-all')">Все услуги</button></div>
+    <div class="svc${rise()}">
+      ${R.svc.map(id=>`<button onclick="openInfo('svc','${id}')"><span class="sico">${ic[SVC[id].ic]}</span><span>${SVC[id].n}</span></button>`).join("")}
+    </div>
+
+    ${R.hasRest?`<div class="sec-h${rise()}"><b>Ресторан «Волен»</b><button onclick="toast(PARK_PHONE_REST)">Позвонить</button></div>
+    <button class="feat${rise()}" onclick="openInfo('rest')">
+      <img src="${IMG.rest}" alt="Зал ресторана «Волен»"><div class="veil"></div>
+      <span class="tag">−20% на меню 12:00–16:00</span>
+      <div class="in"><em>европейская и русская кухня</em><b>Панорамный зал у склона</b><span>150 гостей · 194 м² · 10:00–23:00</span></div>
+    </button>`:`<div class="sec-h${rise()}"><b>Где поесть</b></div>
+    <button class="feat${rise()}" style="height:120px" onclick="openInfo('rest')">
+      <img src="${IMG.rest}" alt="Ресторан «Волен»"><div class="veil"></div>
+      <div class="in"><em>5 минут на шаттле</em><b>Ресторан «Волен»</b><span>Кафе в шале Степаново · 10:00–22:00</span></div>
+    </button>`}
+
+    <div class="sec-h${rise()}"><b>Афиша</b><button onclick="toast('volen.ru/afisha')">Все события</button></div>
+    <button class="feat${rise()}" onclick="openInfo('event','${ev.id}')">
+      <img src="${ev.img}" alt="${ev.t}"><div class="veil"></div>
+      <span class="tag dark">${ev.tag}</span><span class="tag r">${ev.age}</span>
+      <div class="in"><em>праздник</em><b>${ev.t}</b><span>${ev.s}</span></div>
     </button>
-    <button class="act park" onclick="go('park')">
-      <div class="ico">${ic.park}</div>
-      <div><b>Парковка</b><span>${parkHint}</span></div>
-      <div class="chev">›</div>
-    </button>
-    <div class="sec-l">Полезно</div>
-    <div class="quick">
-      <button onclick="state.view='way';render()"><span class="qico">${ic.pin}</span><b>Как доехать</b><span>40 км · Яхрома</span></button>
-      <button onclick="toast(PHONE_PARK)"><span class="qico">${ic.phone}</span><b>Позвонить</b><span>${PHONE_PARK}</span></button>
-      <button onclick="go('park')"><span class="qico">${ic.park}</span><b>Тариф парковки</b><span>${v?"от 200 ₽":"от 300 ₽"}</span></button>
-      <button onclick="go('skip')"><span class="qico">${ic.rules}</span><b>Правила карты</b><span>тайм-аут ${v?"2":"5"} мин</span></button>
+
+    <div class="sec-h${rise()}"><b>Проживание</b><button onclick="toast('volen.ru/hotel')">Все номера</button></div>
+    ${R.hasHotel?"":`<p class="hint" style="margin:-4px 4px 8px">Гостиница и шале — в парке Волен, 5 минут на шаттле.</p>`}
+    <div class="hs${rise()}">
+      ${ROOMS.map(r=>`<button class="room" onclick="openInfo('room','${r.id}')">
+        <div class="im"><img src="${r.img}" alt="${r.t}" loading="lazy"><span class="ph">${r.ph} фото</span></div>
+        <div class="in"><b>${r.t}</b><span>${r.m} · ${r.p}</span><div class="pr">Забронировать ›</div></div>
+      </button>`).join("")}
+    </div>
+
+    <div class="sec-h${rise()}"><b>Как добраться и контакты</b></div>
+    <div class="list${rise()}">
+      <button class="hr" onclick="state.view='way';render()"><span class="ico">${ic.car}</span><b>На машине<small>Дмитровское шоссе, 40 км от МКАД</small></b><span class="chev">›</span></button>
+      <button class="hr" onclick="state.view='way';render()"><span class="ico">${ic.train}</span><b>Электричка<small>до Яхромы, дальше маршрутка 9</small></b><span class="chev">›</span></button>
+      <button class="hr" onclick="toast(CONTACTS.phone)"><span class="ico">${ic.phone}</span><b>${CONTACTS.phone}<small>ресепшен, ежедневно</small></b><span class="chev">›</span></button>
+      <button class="hr" onclick="toast(CONTACTS.mail)"><span class="ico">${ic.mail}</span><b>${CONTACTS.mail}<small>по любым вопросам</small></b><span class="chev">›</span></button>
+      <button class="hr" onclick="toast('Яндекс Карты')"><span class="ico">${ic.pin}</span><b>Яхрома, ул. Троицкая, 1<small>${CONTACTS.addr}</small></b><span class="chev">›</span></button>
+    </div>
+    <div class="soc${rise()}">
+      <button onclick="toast('t.me/volen')" aria-label="Telegram">${ic.tg}</button>
+      <button onclick="toast('vk.com/volen')" aria-label="ВКонтакте">${ic.vk}</button>
+      <button onclick="toast('WhatsApp')" aria-label="WhatsApp">${ic.wa}</button>
+      <span class="lbl">Новости, афиша и live-камеры</span>
+    </div>
+    <div class="foot${rise()}">
+      <button onclick="toast('Правила посещения')">Правила посещения</button><span class="sep">·</span><button onclick="toast('Оферта на volen.ru')">Оферта</button><span class="sep">·</span><button onclick="toast('Политика конфиденциальности')">Конфиденциальность</button><br>
+      АО «Спортивный Парк „ВОЛЕН“» · volen.ru
     </div>`;
+}
+function openInfo(kind,id){state.info={kind,id};render()}
+function closeInfo(){state.info=null;render()}
+function infoRows(rows){return rows.map(([a,b])=>`<div class="pl"><span>${a}</span><b>${b}</b></div>`).join("")}
+function infoSheet(){
+  const {kind,id}=state.info;
+  let body="";
+  if(kind==="promo"){
+    const p=PROMOS.find(x=>x.id===id);
+    body=`<div class="promo ${p.cls}" style="width:100%;margin:2px 0 12px"><span class="tag">${p.tag}</span>${p.pct?`<span class="pct">${p.pct}</span>`:""}<b>${p.t}</b><span>${p.s}</span></div>
+      <p class="ptxt">${p.d}</p>
+      <div class="box" style="margin:0 0 12px">${infoRows(p.rows)}</div>
+      <button class="btn btn-y" onclick="toast('Откроется volen.ru')">${p.cta}</button>`;
+  }
+  if(kind==="svc"){
+    const s=SVC[id];
+    body=`<div class="phead"><span class="sico">${ic[s.ic]}</span><div class="h1">${s.n}</div></div>
+      <p class="ptxt">${s.d}</p>
+      <div class="box" style="margin:0 0 12px">${infoRows(s.rows)}</div>
+      <button class="btn btn-y" onclick="toast('Откроется volen.ru')">Подробнее на volen.ru</button>
+      <button class="btn btn-w" style="margin-top:8px" onclick="toast(PHONE_PARK)">Позвонить в парк</button>`;
+  }
+  if(kind==="svc-all"){
+    body=`<div class="h1" style="margin-bottom:6px">Все услуги</div>
+      <p class="sub" style="margin:0 0 10px">Парк ${rname()}. Нажмите, чтобы посмотреть цены.</p>
+      <div class="list" style="padding:0 14px">${Object.keys(SVC).map(k=>`<button class="hr" onclick="openInfo('svc','${k}')"><span class="ico">${ic[SVC[k].ic]}</span><b>${SVC[k].n}<small>${SVC[k].rows[0][0]} · ${SVC[k].rows[0][1]}</small></b><span class="chev">›</span></button>`).join("")}</div>`;
+  }
+  if(kind==="rest"){
+    body=`<div class="pimg"><img src="${IMG.rest}" alt="Зал ресторана"><span class="tag">−20% на меню 12:00–16:00</span></div>
+      <div class="h1" style="font-size:22px">Ресторан «Волен»</div>
+      <p class="ptxt" style="margin-top:6px">Ресторан в основном здании гостиничного комплекса. Просторный зал с панорамными окнами на склон. В меню — европейская и русская кухня для завтрака, обеда и ужина.</p>
+      <div class="box" style="margin:0 0 12px">${infoRows([["Часы","10:00–23:00"],["Мест","150"],["Площадь","194 м²"],["Скидка","−20% на основное меню 12:00–16:00*"],["Телефон",PARK_PHONE_REST]])}</div>
+      <p class="hint" style="margin:-4px 0 12px">* не распространяется на алкоголь</p>
+      <button class="btn btn-y" onclick="toast('Меню на volen.ru')">Смотреть меню</button>
+      <button class="btn btn-w" style="margin-top:8px" onclick="toast(PARK_PHONE_REST)">Забронировать стол</button>`;
+  }
+  if(kind==="room"){
+    const r=ROOMS.find(x=>x.id===id);
+    body=`<div class="pimg"><img src="${r.img}" alt="${r.t}"><span class="tag">${r.ph} фото</span></div>
+      <div class="h1" style="font-size:22px">${r.t}</div>
+      <p class="ptxt" style="margin-top:6px">${r.d}</p>
+      <div class="box" style="margin:0 0 12px">${infoRows([["Площадь",r.m],["Гости",r.p],["Кровати",r.bed],["Бассейн","включён"],["Заезд / выезд","15:00 / 12:00"]])}</div>
+      <button class="btn btn-y" onclick="toast('Бронирование на volen.ru')">Забронировать на volen.ru</button>
+      <button class="btn btn-w" style="margin-top:8px" onclick="toast(PHONE_PARK)">Позвонить</button>`;
+  }
+  if(kind==="event"){
+    const e=EVENTS.find(x=>x.id===id);
+    body=`<div class="pimg"><img src="${e.img}" alt="${e.t}"><span class="tag">${e.tag}</span></div>
+      <div class="h1" style="font-size:22px">${e.t}</div>
+      <p class="ptxt" style="margin-top:6px">${e.s}</p>
+      <div class="box" style="margin:0 0 12px">${infoRows(e.rows)}</div>
+      <button class="btn btn-y" onclick="toast('Афиша на volen.ru')">Забронировать</button>`;
+  }
+  return `<div class="sheet" onclick="if(event.target===this)closeInfo()">
+    <div class="panel info" role="dialog" aria-modal="true">
+      <div class="handle"></div>
+      ${body}
+      <button class="btn btn-w" style="margin-top:8px" onclick="closeInfo()">Закрыть</button>
+    </div>
+  </div>`;
 }
 function openGal(i){state.view="gallery";state.galI=i||0;render()}
 function galStep(d){
@@ -730,6 +1085,7 @@ function savePhoto(){
   state.photo=state.pick;state.view=null;toast("Фото обновлено");render();
 }
 function sheets(){
+  if(state.info) return infoSheet();
   if(state.sheet!=="pay") return "";
   return `<div class="sheet" onclick="if(event.target===this){state.sheet=null;render()}">
     <div class="panel">
@@ -752,8 +1108,9 @@ function render(){
   document.getElementById("app").innerHTML=`<div class="app"><div class="status"${gal?` style="color:#fff;background:#111"`:""}><span>16:21</span><span>LTE  84%</span></div><div class="body"${gal?` style="padding:0 16px 16px;background:#111"`:""}>${main}</div>${gal?"":tabbar()}${sheets()}</div>`;
   if(state.auth==="otp"){const a=document.getElementById("c0");if(a)a.focus()}
   if(state.view==="email-otp"){const a=document.getElementById("e0");if(a)a.focus()}
+  if(state.tab==="home"&&!state.auth) state.anim=false;
 }
-function go(t){state.tab=t;state.view=null;state.sheet=null;state.auth=null;state.txShown={skip:3,park:3};render()}
+function go(t){state.tab=t;state.view=null;state.sheet=null;state.info=null;state.auth=null;state.txShown={skip:3,park:3};if(t==="home")state.anim=true;render()}
 function openAuth(){state.auth="phone";state.code="";render()}
 function logout(){state.user=null;state.auth=null;state.email=null;state.emailDraft="";state.emailCode="";state.tab="home";toast("Вышли · карты гостя на месте");render()}
 function sendOtp(){
@@ -797,10 +1154,13 @@ function finishPay(){
   state.view="paid";render();
 }
 function run(s){
-  state.sheet=null;state.view=null;state.auth=null;
+  state.sheet=null;state.view=null;state.auth=null;state.info=null;state.anim=true;
   if(s==="home"){state.user=null;state.tab="home";state.resort="volen";state.guestSkip=null;state.guestPark=null;state.guestOk={skip:false,park:false};state.fails=0;state.lockUntil=0}
   if(s==="step"){state.tab="home";state.resort="step"}
   if(s==="way"){state.tab="home";state.view="way"}
+  if(s==="promo"){state.tab="home";state.anim=false;state.info={kind:"promo",id:"secret"}}
+  if(s==="svc"){state.tab="home";state.anim=false;state.info={kind:"svc",id:"rent"}}
+  if(s==="room"){state.tab="home";state.anim=false;state.info={kind:"room",id:"cmf"}}
   if(s==="you"){state.user={name:uname(),phone:"+7 (901) 288-36-41"};state.tab="you";state.guestSkip=true;state.guestPark=true;state.email=null}
   if(s==="name"){state.user={name:uname(),phone:"+7 (901) 288-36-41"};state.tab="you";state.view="name"}
   if(s==="email"){state.user={name:uname(),phone:"+7 (901) 288-36-41"};state.tab="you";state.view="email";state.email=null;state.emailDraft=""}
@@ -828,10 +1188,23 @@ tz:`
   <ol>
     <li>Первый экран после запуска. Вход не спрашиваем.</li>
     <li>Тумблер <b>Волен / Степаново</b>. Выбор пишется локально и уходит в <code>GET /v1/home?resort=</code>.</li>
-    <li>На экране: название парка, погода/статус сезона (если BFF отдаст; иначе статичный блок), две крупные кнопки <b>Ски-пасс</b> и <b>Парковка</b>.</li>
-    <li>Фото парка на главной — мозаика. Клик открывает галерею Волен / Степаново (свой набор). Ленты мелких фото внизу нет.</li>
-    <li>Кнопки ведут на те же вкладки, что нижнее меню. Если карта уже известна — на кнопке баланс, иначе подпись «по номеру карты».</li>
-    <li>Нижнее меню всегда: Главная · Ски-пасс · Парковка · Профиль. В шапке главной нет бейджа телефона — кабинет во вкладке Профиль.</li>
+    <li>Шапка: логотип volen.ru (SVG, терракота) и кнопка «Позвонить». Бейджа телефона/кабинета в шапке нет — кабинет во вкладке Профиль.</li>
+    <li>Герой: мозаика фото с погодой (температура, осадки, ветер) и названием парка. Клик открывает галерею Волен / Степаново (свой набор).</li>
+    <li>Строка статуса под мозаикой, текстом без плашек: зелёная точка + «Открыто до 22:00», склоны и подъёмники, вторая строка — подсветка (Волен) или шаттл (Степаново). Источник — <code>GET /v1/home?resort=</code>; если BFF не отдаёт — статичный блок.</li>
+    <li>Два тайла-кошелька <b>Ски-пасс</b> (терракота) и <b>Парковка</b> (уголь) в ряд — ведут на те же вкладки, что нижнее меню. Если карта известна — на тайле маска номера и баланс крупно, иначе короткая подпись (по номеру карты / тариф парковки).</li>
+    <li>Ниже — информационные разделы с сайта, только чтение, без сделок в приложении. Каждая плитка открывает шторку с описанием, ценами и кнопкой на volen.ru:
+      <ul>
+        <li><b>Акции</b> — карусель: секретный тариф на ски-пассы, длительное проживание −15%, день рождения HAPPY15, раннее бронирование.</li>
+        <li><b>Расписание работы</b> — список объектов с индикатором «открыто сейчас» (по локальному времени и часам объекта): подъёмники, гостиница, ресторан, прокат, бассейн, детская. У Степаново свой набор (кафе в шале, парковка, шаттл).</li>
+        <li><b>Услуги</b> — сетка 4×2 с SVG-иконками: прокат, банный комплекс, бассейн, рыбалка, барбекю, детям, рум-сервис, live-камеры. «Все услуги» — полный список.</li>
+        <li><b>Ресторан «Волен»</b> — карточка с фото, часы, мест, скидка −20% 12:00–16:00, телефон, «Смотреть меню». В Степаново — «Где поесть» со ссылкой на ресторан и кафе в шале.</li>
+        <li><b>Афиша</b> — ближайшее событие (Новый год в «Волене»).</li>
+        <li><b>Проживание</b> — карусель номеров: площадь, гости, фото → шторка → «Забронировать на volen.ru». В Степаново — подпись «гостиница в Волене, 5 минут на шаттле».</li>
+        <li><b>Как добраться и контакты</b> — на машине, электричка, телефон, почта, адрес, соцсети; подвал: правила, оферта, конфиденциальность.</li>
+      </ul>
+    </li>
+    <li>Контент разделов приходит из BFF (<code>GET /v1/home</code> расширяется полями <code>promos, hours, services, restaurant, events, rooms, contacts</code>) либо в первой версии статикой в клиенте. Внешние ссылки открываются в in-app browser.</li>
+    <li>Нижнее меню всегда: Главная · Ски-пасс · Парковка · Профиль. Плавающая стеклянная панель (blur), контент прокручивается под ней; в галерее скрыта.</li>
   </ol>
   <h3>2. Авторизация = регистрация, один UX</h3>
   <ol>
@@ -991,7 +1364,21 @@ kit:`
     <li>Белая кнопка с текстом #651e16 — «Продолжить без входа», как «Забронировать номер» в шапке сайта.</li>
     <li>Чёрный #212121 — вторичные действия («Привязать», «На карту»).</li>
     <li>Ски-пасс-кошелёк: градиент #c44736 → #651e16. Парковка: уголь #3a3534 → #111111, как тёмные блоки на сайте.</li>
-    <li>Шрифт Golos Text. На сайте SF Pro — в приложение не тащим.</li>
+    <li>Шрифт Golos Text. На сайте Gilroy/SF Pro — в приложение не тащим.</li>
+  </ul>
+  <h3>Главная: разделы</h3>
+  <ul>
+    <li>Логотип — оригинальный SVG с volen.ru (<code>static.tildacdn.com/…/logo.svg</code>), заливка <code>currentColor</code>: терракота на светлом фоне, белый на терракоте.</li>
+    <li>Статус — обычный текст 13px: зелёная точка #1a7a4c, «Открыто до 22:00» жирным, дальше факты через «·». Без плашек и чипов.</li>
+    <li>Тайлы Ски-пасс / Парковка — 2 в ряд, 148px, скругление 22: иконка контуром вверху слева, маска номера моноширинным, баланс 24px, название 16px, подпись 12px. Градиенты те же, что у кошельков в профиле. Без декоративных кругов и бликов.</li>
+    <li>Акции — четыре градиента: терракота (#c44736 → #651e16), уголь (#3a3534 → #111111), коралл (#ff8562 → #ac2d1e), глубокий (#651e16 → #262526). Процент крупно в правом верхнем углу, тег слева.</li>
+    <li>Расписание — белый список, точка-индикатор: зелёная #1a7a4c «открыто», серая #c4c3bf «закрыто». Часы табличными цифрами.</li>
+    <li>Услуги — плитки 4 в ряд, иконка 22px в контейнере 40px на фоне Wash #f4e4e0, подпись 11px. Иконки — единый набор, штрих 1.75, viewBox 24.</li>
+    <li>Ресторан и афиша — фото-карточки высотой 186px с градиентной вуалью снизу, тег терракота в углу.</li>
+    <li>Номера — карусель карточек 196px: фото 112px, название, площадь · гости, «Забронировать ›» терракотой.</li>
+    <li>Шторки деталей — те же <code>.sheet/.panel</code>, что у оплаты, до 90% высоты, скролл внутри, основная кнопка терракота, вторая белая.</li>
+    <li>Таббар — плавающее стекло: отступ 12px от краёв и 18px снизу, высота 66, радиус 24; фон <code>rgba(255,255,255,.72)</code> + <code>backdrop-filter: blur(22px) saturate(1.6)</code>, граница <code>rgba(255,255,255,.75)</code>, мягкая тень. Активная вкладка — пилюля <code>rgba(172,45,30,.09)</code> с терракотовой иконкой. Без поддержки blur — белый 96%. Во Flutter — <code>BackdropFilter</code> + <code>ClipRRect</code>.</li>
+    <li>Движение: появление блоков снизу 10px, 450мс, шаг 45мс; hover — тень без сдвига; при <code>prefers-reduced-motion</code> анимации выключены. Тач-таргеты не меньше 44px.</li>
   </ul>
 `
 };
