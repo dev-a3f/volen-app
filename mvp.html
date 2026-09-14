@@ -4,36 +4,37 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Волен · MVP: главная, ски-пасс, парковка</title>
+<script src="https://mcp.figma.com/mcp/html-to-design/capture.js" async></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 :root{
-  /* volen.ru, живая главная: шапка и CTA — терракота, не navy/лимон из старого CSS Tilda */
-  --bg:#f6f1ee;
-  --ink:#212121;
-  --mute:#7a706c;
-  --line:#eadfd9;
+  /* Брендбук Figma Volen · токен 14264E + шкалы Blue / Yellow / Red / Neutral */
+  --bg:#f4f8ff;
+  --ink:#14264e;
+  --mute:#555555;
+  --line:#d8e6ff;
   --card:#fff;
-  --brand:#ac2d1e;
-  --brand-deep:#651e16;
-  --coral:#ff8562;
-  --navy:#ac2d1e;
-  --navy-2:#651e16;
-  --blue:#ac2d1e;
-  --blue-deep:#651e16;
-  --wash:#f4e4e0;
-  --gold:#ac2d1e;
-  --slate:#262526;
-  --ink-dark:#111111;
-  --go:#1a7a4c;
-  --hot:#8b1f14;
+  --brand:#14264e;
+  --brand-deep:#0a2b63;
+  --coral:#d14135;
+  --navy:#14264e;
+  --navy-2:#0a2b63;
+  --blue:#2f73f2;
+  --blue-deep:#1d5fc7;
+  --wash:#eaf1ff;
+  --gold:#f5c84b;
+  --slate:#0a2b63;
+  --ink-dark:#191919;
+  --go:#47603d;
+  --hot:#a31c19;
   --ui:"Golos Text",system-ui,sans-serif;
 }
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:var(--ui);background:#e8e0db;color:var(--ink);-webkit-font-smoothing:antialiased}
+body{font-family:var(--ui);background:#dce3ea;color:var(--ink);-webkit-font-smoothing:antialiased}
 button,input{font-family:inherit}button{cursor:pointer;border:0;background:none}
 .page{display:grid;grid-template-columns:minmax(420px,470px) 1fr;min-height:100vh}
-.stage{position:sticky;top:0;height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:16px 8px;background:#d9cfc8}
+.stage{position:sticky;top:0;height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:16px 8px;background:#cfd8e2}
 .kicker{font-size:10px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--blue)}
 .stage h1{font-size:18px;text-align:center;letter-spacing:-.03em}
 .sp{font-size:12px;color:#5c6168;text-align:center;max-width:380px;line-height:1.45}
@@ -49,10 +50,10 @@ button,input{font-family:inherit}button{cursor:pointer;border:0;background:none}
 .tabbar{position:absolute;left:12px;right:12px;bottom:18px;height:66px;padding:5px 6px;border-radius:24px;display:grid;grid-template-columns:repeat(4,1fr);z-index:20;
   background:rgba(255,255,255,.72);-webkit-backdrop-filter:blur(22px) saturate(1.6);backdrop-filter:blur(22px) saturate(1.6);
   border:1px solid rgba(255,255,255,.75);box-shadow:0 10px 30px -10px #0004,0 1px 2px #0000000a,inset 0 1px 0 rgba(255,255,255,.9)}
-.tabbar:before{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;box-shadow:inset 0 0 0 1px rgba(101,30,22,.06)}
+.tabbar:before{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;box-shadow:inset 0 0 0 1px rgba(24,39,73,.08)}
 .tabbar button{position:relative;color:#7a706c;font-size:10px;font-weight:700;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;border-radius:18px;transition:color .2s,background-color .2s}
 .tabbar button svg{width:24px;height:24px;transition:transform .2s}
-.tabbar button.on{color:var(--brand);background:rgba(172,45,30,.09)}
+.tabbar button.on{color:var(--brand);background:rgba(20,38,78,.09)}
 .tabbar button.on svg{transform:translateY(-1px)}
 .tabbar button:hover{color:var(--brand-deep)}
 @supports not (backdrop-filter:blur(1px)){.tabbar{background:rgba(255,255,255,.96)}}
@@ -72,7 +73,7 @@ button,input{font-family:inherit}button{cursor:pointer;border:0;background:none}
 .otp input{width:56px;height:64px;border-radius:14px;border:1px solid var(--line);text-align:center;font-size:24px;font-weight:800;background:#fff}
 .hint{font-size:12px;color:var(--mute);line-height:1.4;margin-top:10px}
 .ok{color:var(--go);font-weight:700}.warn{color:var(--hot);font-weight:700}
-.wallet{background:linear-gradient(160deg,#c44736 0%,var(--brand) 48%,var(--brand-deep) 100%);color:#fff;border-radius:22px;padding:18px 18px 16px;margin:8px 0 12px;position:relative;overflow:hidden}
+.wallet{background:linear-gradient(160deg,var(--blue) 0%,var(--brand) 48%,var(--brand-deep) 100%);color:#fff;border-radius:22px;padding:18px 18px 16px;margin:8px 0 12px;position:relative;overflow:hidden}
 .wallet:before{content:"";position:absolute;right:-30px;top:-40px;width:140px;height:140px;border-radius:50%;background:#fff2}
 .wallet .k{font-size:12px;opacity:.85;font-weight:700}
 .wallet .sum{font-size:32px;font-weight:800;margin:8px 0 4px;letter-spacing:-.04em}
@@ -173,7 +174,7 @@ button,input{font-family:inherit}button{cursor:pointer;border:0;background:none}
 .pcard .k{font-size:12px;opacity:.85;font-weight:700}
 .pcard .sum{font-size:26px;font-weight:800;margin:6px 0 2px;letter-spacing:-.04em}
 .pcard .row2{display:flex;justify-content:space-between;font-size:13px;opacity:.95}
-.pcard.s{background:linear-gradient(160deg,#c44736,var(--brand-deep))}
+.pcard.s{background:linear-gradient(160deg,var(--blue),var(--brand-deep))}
 .pcard.p{background:linear-gradient(160deg,#3a3534,var(--ink-dark))}
 .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:12px 0}
 .grid3 button{aspect-ratio:1;border-radius:16px;overflow:hidden;background:#fff;border:3px solid transparent}
@@ -205,8 +206,9 @@ button,input{font-family:inherit}button{cursor:pointer;border:0;background:none}
 
 /* Главная v2 */
 .brandbar{display:flex;justify-content:space-between;align-items:center;padding:6px 0 12px}
-.brandbar .lg{color:var(--brand);width:98px;height:37px;display:block}
-.brandbar .lg svg{width:100%;height:100%;display:block}
+.brandbar .lg{color:var(--brand);height:36px;display:flex;align-items:center;gap:8px}
+.brandbar .lg svg{width:auto;height:36px;aspect-ratio:129/156;display:block;flex:none}
+.brandbar .lg b{font-size:17px;font-weight:800;letter-spacing:.14em;line-height:1}
 .pillb{height:36px;padding:0 12px 0 10px;border-radius:999px;background:#fff;font-size:12px;font-weight:800;border:1px solid var(--line);display:flex;align-items:center;gap:6px;color:var(--brand-deep)}
 .pillb svg{width:16px;height:16px}
 .wxchip{position:absolute;top:10px;left:10px;z-index:1;display:flex;align-items:center;gap:6px;background:#fff;color:var(--ink);font-size:12px;font-weight:800;padding:6px 10px 6px 8px;border-radius:999px;box-shadow:0 2px 8px #0003}
@@ -220,7 +222,7 @@ button,input{font-family:inherit}button{cursor:pointer;border:0;background:none}
 .duo{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:0 0 6px}
 .duo button{position:relative;height:148px;border-radius:22px;padding:14px 14px 13px;text-align:left;color:#fff;overflow:hidden;display:flex;flex-direction:column;justify-content:space-between;transition:transform .2s,opacity .2s}
 .duo button:active{transform:scale(.985)}
-.duo .sk{background:linear-gradient(160deg,#c44736 0%,var(--brand) 55%,var(--brand-deep) 100%)}
+.duo .sk{background:linear-gradient(160deg,var(--blue) 0%,var(--brand) 55%,var(--brand-deep) 100%)}
 .duo .pk{background:linear-gradient(160deg,#3a3534 0%,var(--slate) 55%,var(--ink-dark) 100%)}
 .duo .top{display:flex;justify-content:space-between;align-items:flex-start;position:relative}
 .duo .top svg{width:26px;height:26px;opacity:.95}
@@ -242,7 +244,7 @@ button,input{font-family:inherit}button{cursor:pointer;border:0;background:none}
 .promo .pct{position:absolute;top:8px;right:14px;font-size:34px;font-weight:800;letter-spacing:-.05em;line-height:1}
 .promo b{font-size:17px;letter-spacing:-.03em;display:block;line-height:1.15;position:relative}
 .promo span{font-size:12px;opacity:.9;display:block;margin-top:4px;line-height:1.35;position:relative}
-.promo.a{background:linear-gradient(150deg,#c44736,var(--brand-deep))}
+.promo.a{background:linear-gradient(150deg,var(--blue),var(--brand-deep))}
 .promo.b{background:linear-gradient(150deg,#3a3534,var(--ink-dark))}
 .promo.c{background:linear-gradient(150deg,var(--coral),var(--brand))}
 .promo.d{background:linear-gradient(150deg,var(--brand-deep),var(--slate))}
@@ -274,7 +276,7 @@ button,input{font-family:inherit}button{cursor:pointer;border:0;background:none}
 .feat .tag.dark{background:#111c;backdrop-filter:blur(6px)}
 .feat .tag.r{left:auto;right:12px}
 .room{width:196px;background:#fff;border-radius:18px;overflow:hidden;text-align:left;box-shadow:0 1px 3px #0000000c}
-.room .im{height:112px;background:#d9cfc8;position:relative}
+.room .im{height:112px;background:#cfd8e2;position:relative}
 .room img{width:100%;height:100%;object-fit:cover;display:block}
 .room .ph{position:absolute;top:8px;right:8px;background:#0008;color:#fff;font-size:10px;font-weight:800;padding:4px 7px;border-radius:999px;backdrop-filter:blur(6px)}
 .room .in{padding:10px 12px 12px}
@@ -289,7 +291,7 @@ button,input{font-family:inherit}button{cursor:pointer;border:0;background:none}
 .foot button{color:var(--brand);font-weight:700;font-size:11px;padding:2px 0}
 .foot .sep{margin:0 5px;color:#c4c3bf}
 .panel.info{max-height:90%;overflow:auto;padding-bottom:26px}
-.panel .pimg{height:156px;border-radius:16px;overflow:hidden;margin:2px 0 12px;position:relative;background:#d9cfc8}
+.panel .pimg{height:156px;border-radius:16px;overflow:hidden;margin:2px 0 12px;position:relative;background:#cfd8e2}
 .panel .pimg img{width:100%;height:100%;object-fit:cover;display:block}
 .panel .pimg .tag{position:absolute;top:10px;left:10px;background:var(--brand);color:#fff;font-size:11px;font-weight:800;padding:5px 9px;border-radius:999px}
 .panel .phead{display:flex;align-items:center;gap:12px;margin:2px 0 10px}
@@ -312,6 +314,11 @@ button,input{font-family:inherit}button{cursor:pointer;border:0;background:none}
 button:focus-visible{outline:2px solid var(--brand);outline-offset:2px}
 @media(prefers-reduced-motion:reduce){.rise{animation:none}.act,.svc button,.room,.tile,.promo,.feat{transition:none}}
 @media(max-width:980px){.page{grid-template-columns:1fr}.stage{position:relative;height:auto}}
+body.export-mode{background:#dce3ea;margin:0}
+body.export-mode .page{display:none!important}
+.export-board{display:flex;flex-wrap:wrap;gap:48px 40px;padding:56px;align-items:flex-start}
+.export-phone{display:flex;flex-direction:column;gap:12px;align-items:center}
+.export-phone .lbl{font:800 13px/1.2 var(--ui);letter-spacing:.1em;text-transform:uppercase;color:#14264e}
 </style>
 </head>
 <body>
@@ -376,7 +383,7 @@ const IMG={
   ny:"https://images.unsplash.com/photo-1482517967863-00e15c9b44be?auto=format&fit=crop&w=1000&q=70",
   pool:"https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?auto=format&fit=crop&w=1000&q=70"
 };
-const LOGO=`<svg viewBox="0 0 122 46" fill="none" role="img" aria-label="Волен · спортивный парк"><path d="M87.00 25.49H97.17V20.52H87.00V14.81H97.71V9.84H80.80V36.91H98.24V31.94H87.00V25.49Z" fill="currentColor"/><path d="M105.52 25.59H115.79V36.91H122V9.84H115.79V20.20H105.52V9.84H99.31V36.91H105.52V25.59Z" fill="currentColor"/><path d="M79.62 36.91L71.16 9.62H62.92L54.47 36.91H61.00L66.99 17.66L72.98 36.91H79.62Z" fill="currentColor"/><path d="M41.31 37.22C41.84 37.33 42.38 37.33 43.02 37.33C51.05 37.33 56.50 31.94 56.50 23.05C56.50 15.65 51.90 9.31 43.45 9.31C35.42 9.31 30.07 15.34 30.07 23.48C30.07 28.45 32.00 32.68 35.53 35.11C32.96 34.48 30.39 33.42 27.93 32.36C28.46 31.20 28.79 30.03 28.79 28.77C28.79 26.44 27.82 24.22 26.11 22.74C26.00 22.63 25.90 22.53 25.68 22.42C25.68 22.42 25.68 22.42 25.58 22.31C25.47 22.21 25.47 22.21 25.36 22.21C24.61 21.57 23.65 21.15 22.79 20.83C25.58 19.88 26.97 17.24 26.97 14.28C26.97 10.47 23.76 7.30 19.90 7.30H12.41H9.31H7.49C8.45 5.71 12.20 0.42 20.87 0.53C21.83 0.53 21.08 0.11 20.55 0.11C18.73 0.11 16.59 0.21 14.66 0.64C12.95 1.06 11.77 1.59 11.34 1.80C10.59 2.01 9.95 2.43 9.31 2.86C3.74 6.88 2.35 14.28 7.17 20.41C8.88 22.63 10.7 24.43 12.52 26.02V23.69H17.01C19.15 23.69 20.87 25.38 20.87 27.50V28.02C20.87 29.29 20.22 30.35 19.26 31.09C22.9 33.31 25.58 34.37 26.43 34.58C26.43 34.58 26.43 34.58 26.54 34.48L20.44 30.77C20.44 30.88 31.68 36.59 41.31 37.22ZM43.34 14.28C47.62 14.28 49.98 18.40 49.98 23.27C49.98 28.55 47.62 32.47 43.34 32.47C39.17 32.47 36.71 28.66 36.71 23.48C36.71 18.19 39.06 14.28 43.34 14.28ZM16.26 19.46H12.63V11.85H16.26C18.41 11.85 20.12 13.54 20.12 15.65C20.12 17.77 18.41 19.46 16.26 19.46Z" fill="currentColor"/><path d="M3.86 29.51V37.23H11.99C8.99 35.43 6.64 33.31 3.86 29.51Z" fill="currentColor"/><path d="M13.06 0.43C12.95 0.32 12.84 0.32 12.84 0.21C2.46 2.75 0 9.31 0 9.52C0.43 9.20 3.00 7.93 3.21 7.83C6.31 2.75 9.95 1.59 13.06 0.43Z" fill="currentColor"/><path d="M40.35 40.93C39.81 41.46 39.60 42.20 39.60 43.04C39.60 43.99 39.81 44.73 40.35 45.26C40.88 45.79 41.52 46.00 42.38 46.00C42.59 46.00 42.92 46.00 43.13 45.90C43.45 45.79 43.77 45.69 44.31 45.47V44.63C43.99 44.95 43.66 45.16 43.34 45.26C43.02 45.37 42.70 45.37 42.38 45.37C41.74 45.37 41.31 45.16 40.99 44.73C40.67 44.31 40.45 43.78 40.45 43.04C40.45 42.30 40.67 41.77 40.99 41.35C41.31 40.93 41.84 40.72 42.38 40.72C43.02 40.72 43.66 40.93 44.31 41.46V40.61C43.66 40.29 43.02 40.08 42.38 40.08C41.52 40.19 40.88 40.40 40.35 40.93Z" fill="currentColor"/><path d="M45.38 45.90H46.12V40.82H49.12V45.90H49.76V40.29H45.38V45.90Z" fill="currentColor"/><path d="M53.72 40.08C52.87 40.08 52.22 40.29 51.80 40.82C51.37 41.35 51.05 42.09 51.05 43.04C51.05 43.99 51.26 44.73 51.80 45.26C52.22 45.79 52.87 46.00 53.72 46.00C54.58 46.00 55.22 45.79 55.65 45.26C56.08 44.73 56.40 43.99 56.40 43.04C56.40 42.09 56.18 41.35 55.65 40.82C55.11 40.40 54.47 40.08 53.72 40.08ZM55.11 44.84C54.79 45.26 54.36 45.47 53.72 45.47C53.08 45.47 52.65 45.26 52.33 44.84C52.01 44.42 51.80 43.89 51.80 43.15C51.80 42.41 52.01 41.77 52.33 41.46C52.65 41.03 53.08 40.82 53.72 40.82C54.36 40.82 54.79 41.03 55.11 41.46C55.43 41.88 55.65 42.41 55.65 43.25C55.54 43.89 55.43 44.42 55.11 44.84Z" fill="currentColor"/><path d="M59.18 40.29H57.58V46.00H58.33V43.89H59.18C59.93 43.89 60.47 43.68 60.79 43.36C61.22 43.04 61.32 42.62 61.32 41.98C61.32 41.45 61.11 41.03 60.79 40.71C60.47 40.40 59.93 40.29 59.18 40.29ZM60.25 42.83C60.04 43.04 59.61 43.15 58.97 43.15H58.22V40.82H59.08C59.61 40.82 59.93 40.93 60.25 41.14C60.47 41.35 60.57 41.56 60.57 41.98C60.57 42.30 60.47 42.62 60.25 42.83Z" fill="currentColor"/><path d="M61.86 40.82H63.89V45.90H64.53V40.82H66.56V40.29H61.86V40.82Z" fill="currentColor"/><path d="M68.27 44.84V40.29H67.63V45.90H68.27L71.27 41.24V45.90H71.91V40.29H71.16L68.27 44.84Z" fill="currentColor"/><path d="M76.62 42.72C77.16 42.41 77.37 41.98 77.37 41.56C77.37 41.35 77.37 41.24 77.27 41.03C77.16 40.93 77.05 40.71 76.94 40.61C76.84 40.50 76.62 40.40 76.41 40.40C76.19 40.29 75.98 40.29 75.87 40.29C75.66 40.29 75.45 40.29 75.23 40.29H73.52V46.00H75.55C76.30 46.00 76.84 45.90 77.27 45.58C77.69 45.26 77.91 44.84 77.91 44.31C77.91 43.89 77.80 43.57 77.59 43.36C77.27 42.94 76.94 42.83 76.62 42.72ZM74.27 40.82H75.23C75.87 40.82 76.30 40.93 76.41 41.03C76.52 41.14 76.62 41.35 76.62 41.56C76.62 41.88 76.52 42.09 76.30 42.30C76.09 42.41 75.77 42.51 75.23 42.51H74.16V40.82H74.27ZM76.73 45.05C76.52 45.26 75.98 45.37 75.23 45.37H74.16V43.15H75.34C75.87 43.15 76.19 43.15 76.41 43.25C76.62 43.36 76.73 43.46 76.84 43.68C76.94 43.78 76.94 43.99 76.94 44.20C77.05 44.52 76.94 44.84 76.73 45.05Z" fill="currentColor"/><path d="M82.73 42.51H79.73V40.29H78.98V45.90H79.73V43.15H82.73V45.90H83.37V40.29H82.73V42.51Z" fill="currentColor"/><path d="M89.89 40.29H90.64V46.00H89.89V40.29Z" fill="currentColor"/><path d="M87.11 42.51H85.83V40.29H85.08V46.00H87.11C87.86 46.00 88.40 45.90 88.72 45.58C89.14 45.26 89.25 44.84 89.25 44.31C89.25 43.78 89.04 43.36 88.72 43.04C88.40 42.62 87.86 42.51 87.11 42.51ZM88.18 45.05C87.97 45.26 87.43 45.37 86.79 45.37H85.72V43.15H86.79C87.22 43.15 87.54 43.15 87.75 43.25C87.97 43.25 88.07 43.46 88.29 43.57C88.40 43.78 88.50 43.99 88.50 44.31C88.50 44.52 88.40 44.84 88.18 45.05Z" fill="currentColor"/><path d="M93.00 44.84V40.29H92.25V45.90H93.00L95.89 41.24V45.90H96.64V40.29H95.78L93.00 44.84Z" fill="currentColor"/><path d="M101.02 45.90H101.77V40.82H104.77V45.90H105.52V40.29H101.02V45.90Z" fill="currentColor"/><path d="M108.62 40.29L106.48 46.00H107.23L107.88 44.42H110.34L110.98 46.00H111.73L109.59 40.29H108.62ZM107.98 43.68L109.05 40.82L110.12 43.68H107.98Z" fill="currentColor"/><path d="M114.19 40.29H112.58V46.00H113.33V43.89H114.19C114.94 43.89 115.47 43.68 115.79 43.36C116.22 43.04 116.33 42.62 116.33 41.98C116.33 41.45 116.11 41.03 115.79 40.71C115.47 40.40 114.94 40.29 114.19 40.29ZM115.26 42.83C115.04 43.04 114.61 43.15 113.97 43.15H113.22V40.82H114.08C114.61 40.82 114.94 40.93 115.26 41.14C115.47 41.35 115.58 41.56 115.58 41.98C115.58 42.30 115.47 42.62 115.26 42.83Z" fill="currentColor"/><path d="M119.33 42.94C119.54 42.83 119.75 42.62 119.97 42.41C120.08 42.20 120.18 41.98 120.29 41.67C120.40 41.35 120.50 41.03 120.72 40.93C120.83 40.82 121.04 40.72 121.36 40.72H121.68V40.08H121.47C121.04 40.08 120.72 40.19 120.50 40.29C120.29 40.50 120.08 40.72 119.86 41.24C119.65 41.67 119.54 41.88 119.54 41.98C119.43 42.09 119.43 42.20 119.33 42.30C119.22 42.41 119.11 42.51 118.90 42.51C118.79 42.62 118.58 42.62 118.26 42.62V40.08H117.51V45.79H118.26V43.36H118.90L121.25 46.00H122.22L119.33 42.94Z" fill="currentColor"/></svg>`;
+const LOGO=`<svg viewBox="0 0 129 156.023" fill="none" aria-hidden="true"><path fill="currentColor" d="M17 114.023C29 136.523 44.5001 149.024 66 156.023H19C17.8954 156.023 17 155.125 17 154.021V114.023ZM17 78.0235C17 30.0232 71.5 -0.976232 121 0.0234822C105 0.0236463 69 7.52304 59 36.0235H81C109 36.0235 121 54.0233 121 72.0235C121 80.2645 118.512 87.4972 113 93.0235C120.012 96.9973 129 106.043 129 120.023C129 137.627 117.555 150.653 102.5 154.523C55.5002 149.524 17.0003 117.024 17 78.0235ZM50 108.023C49.5 108.023 49 108.523 49 109.023C49.0002 116.524 70.5001 132.023 85 132.023C92 132.023 96.9999 126.024 97 120.023C97 114.023 92 108.036 85 108.036L50 108.023ZM50 60.0235C49.4477 60.0235 49 60.4712 49 61.0235V83.0235C49.0002 83.5756 49.4478 84.0235 50 84.0235H77C84.9999 84.0235 88.9999 77.0236 89 72.0235C89 67.0234 85 60.0235 77 60.0235H50ZM81 0.523482C40.5001 7.52349 11.5001 36.0229 9 78.0225L0 60.0235C8.5 30.5235 40 4.5235 81 0.523482Z"/></svg><b>ВОЛЕН</b>`;
 const GALLERY={
   volen:[
     {src:IMG.volen,cap:"Склоны парка Волен",sub:"Яхрома · основной курорт"},
@@ -727,16 +734,6 @@ function screenHome(){
       <button class="hr" onclick="toast(CONTACTS.phone)"><span class="ico">${ic.phone}</span><b>${CONTACTS.phone}<small>ресепшен, ежедневно</small></b><span class="chev">›</span></button>
       <button class="hr" onclick="toast(CONTACTS.mail)"><span class="ico">${ic.mail}</span><b>${CONTACTS.mail}<small>по любым вопросам</small></b><span class="chev">›</span></button>
       <button class="hr" onclick="toast('Яндекс Карты')"><span class="ico">${ic.pin}</span><b>Яхрома, ул. Троицкая, 1<small>${CONTACTS.addr}</small></b><span class="chev">›</span></button>
-    </div>
-    <div class="soc${rise()}">
-      <button onclick="toast('t.me/volen')" aria-label="Telegram">${ic.tg}</button>
-      <button onclick="toast('vk.com/volen')" aria-label="ВКонтакте">${ic.vk}</button>
-      <button onclick="toast('WhatsApp')" aria-label="WhatsApp">${ic.wa}</button>
-      <span class="lbl">Новости, афиша и live-камеры</span>
-    </div>
-    <div class="foot${rise()}">
-      <button onclick="toast('Правила посещения')">Правила посещения</button><span class="sep">·</span><button onclick="toast('Оферта на volen.ru')">Оферта</button><span class="sep">·</span><button onclick="toast('Политика конфиденциальности')">Конфиденциальность</button><br>
-      АО «Спортивный Парк „ВОЛЕН“» · volen.ru
     </div>`;
 }
 function openInfo(kind,id){state.info={kind,id};render()}
@@ -1188,10 +1185,10 @@ tz:`
   <ol>
     <li>Первый экран после запуска. Вход не спрашиваем.</li>
     <li>Тумблер <b>Волен / Степаново</b>. Выбор пишется локально и уходит в <code>GET /v1/home?resort=</code>.</li>
-    <li>Шапка: логотип volen.ru (SVG, терракота) и кнопка «Позвонить». Бейджа телефона/кабинета в шапке нет — кабинет во вкладке Профиль.</li>
+    <li>Шапка: логотип из брендбука (знак + «ВОЛЕН», navy) и кнопка «Позвонить». Бейджа телефона/кабинета в шапке нет — кабинет во вкладке Профиль.</li>
     <li>Герой: мозаика фото с погодой (температура, осадки, ветер) и названием парка. Клик открывает галерею Волен / Степаново (свой набор).</li>
     <li>Строка статуса под мозаикой, текстом без плашек: зелёная точка + «Открыто до 22:00», склоны и подъёмники, вторая строка — подсветка (Волен) или шаттл (Степаново). Источник — <code>GET /v1/home?resort=</code>; если BFF не отдаёт — статичный блок.</li>
-    <li>Два тайла-кошелька <b>Ски-пасс</b> (терракота) и <b>Парковка</b> (уголь) в ряд — ведут на те же вкладки, что нижнее меню. Если карта известна — на тайле маска номера и баланс крупно, иначе короткая подпись (по номеру карты / тариф парковки).</li>
+    <li>Два тайла-кошелька <b>Ски-пасс</b> (navy) и <b>Парковка</b> (уголь) в ряд — ведут на те же вкладки, что нижнее меню. Если карта известна — на тайле маска номера и баланс крупно, иначе короткая подпись (по номеру карты / тариф парковки).</li>
     <li>Ниже — информационные разделы с сайта, только чтение, без сделок в приложении. Каждая плитка открывает шторку с описанием, ценами и кнопкой на volen.ru:
       <ul>
         <li><b>Акции</b> — карусель: секретный тариф на ски-пассы, длительное проживание −15%, день рождения HAPPY15, раннее бронирование.</li>
@@ -1200,7 +1197,7 @@ tz:`
         <li><b>Ресторан «Волен»</b> — карточка с фото, часы, мест, скидка −20% 12:00–16:00, телефон, «Смотреть меню». В Степаново — «Где поесть» со ссылкой на ресторан и кафе в шале.</li>
         <li><b>Афиша</b> — ближайшее событие (Новый год в «Волене»).</li>
         <li><b>Проживание</b> — карусель номеров: площадь, гости, фото → шторка → «Забронировать на volen.ru». В Степаново — подпись «гостиница в Волене, 5 минут на шаттле».</li>
-        <li><b>Как добраться и контакты</b> — на машине, электричка, телефон, почта, адрес, соцсети; подвал: правила, оферта, конфиденциальность.</li>
+        <li><b>Как добраться и контакты</b> — на машине, электричка, телефон, почта, адрес. Соцсети, правила, оферта и подвал с юрлицом на главной не показываем.</li>
       </ul>
     </li>
     <li>Контент разделов приходит из BFF (<code>GET /v1/home</code> расширяется полями <code>promos, hours, services, restaurant, events, rooms, contacts</code>) либо в первой версии статикой в клиенте. Внешние ссылки открываются в in-app browser.</li>
@@ -1244,7 +1241,7 @@ tz:`
     <li>Имя и фамилия — отдельный экран, <code>PATCH /v1/me</code>.</li>
     <li>Фото — отдельный экран: пресеты, камера, галерея. Загрузка файла на BFF.</li>
     <li>Почта опциональна. Ввод адреса → код из письма → сохраняем. Без кода почта не пишется в кабинет.</li>
-    <li>Карты в профиле — как кошельки: ски-пасс терракота, парковка тёмная, баланс крупно.</li>
+    <li>Карты в профиле — как кошельки: ски-пасс navy, парковка тёмная, баланс крупно.</li>
   </ol>
   <h3>Не делать в этом MVP</h3>
   <ul>
@@ -1342,48 +1339,86 @@ est:`
   </ol>
 `,
 kit:`
-  <h2>Дизайн-кит с volen.ru</h2>
-  <p class="lead">Снято с живой главной https://volen.ru/ (август 2026). Бренд — терракота шапки и кнопок. Navy <code>#002e4c</code> и лимон <code>#fff705</code> сидят в CSS Tilda как старые токены, на экране их почти нет.</p>
+  <h2>Дизайн-кит по брендбуку Figma</h2>
+  <p class="lead">Снято из файла Volen, кадры <code>2154:1643</code> (логотип) и <code>2158:2100</code> (палитра). Основной токен <code>#14264E</code>, шрифт в брендбуке Gilroy Bold — в макете Golos Text.</p>
   <div class="kit">
-    <div class="sw"><i style="background:#ac2d1e"></i><b>Brand</b><span>#ac2d1e · шапка, CTA</span></div>
-    <div class="sw"><i style="background:#651e16"></i><b>Brand deep</b><span>#651e16 · текст на белой кнопке</span></div>
-    <div class="sw"><i style="background:#ff8562"></i><b>Coral</b><span>#ff8562 · акцент логотипа</span></div>
-    <div class="sw"><i style="background:#212121"></i><b>Ink</b><span>#212121 · текст, вторичная кнопка</span></div>
-    <div class="sw"><i style="background:#111111"></i><b>Ink dark</b><span>#111111 · блоки сайта, парковка</span></div>
-    <div class="sw"><i style="background:#262526"></i><b>Slate</b><span>#262526</span></div>
-    <div class="sw"><i style="background:#f6f1ee"></i><b>Canvas</b><span>#f6f1ee · фон приложения</span></div>
-    <div class="sw"><i style="background:#f4e4e0"></i><b>Wash</b><span>#f4e4e0 · иконки, вторичное</span></div>
-    <div class="sw"><i style="background:#7a706c"></i><b>Mute</b><span>#7a706c · подписи</span></div>
-    <div class="sw"><i style="background:#eadfd9"></i><b>Line</b><span>#eadfd9 · границы</span></div>
-    <div class="sw"><i style="background:#8b1f14"></i><b>Hot</b><span>#8b1f14 · ошибки</span></div>
-    <div class="sw"><i style="background:#ffffff;border-bottom:1px solid #eadfd9"></i><b>Card</b><span>#ffffff · карточки, шапка CTA «Забронировать»</span></div>
+    <div class="sw"><i style="background:#14264e"></i><b>Brand</b><span>#14264E · шапка, CTA, лого</span></div>
+    <div class="sw"><i style="background:#0a2b63"></i><b>Blue 10</b><span>#0A2B63 · глубокий navy</span></div>
+    <div class="sw"><i style="background:#2f73f2"></i><b>Blue 40</b><span>#2F73F2 · акцент, градиенты</span></div>
+    <div class="sw"><i style="background:#1d5fc7"></i><b>Blue 30</b><span>#1D5FC7 · вторичный синий</span></div>
+    <div class="sw"><i style="background:#f4f8ff"></i><b>Blue 100</b><span>#F4F8FF · фон приложения</span></div>
+    <div class="sw"><i style="background:#eaf1ff"></i><b>Blue 90</b><span>#EAF1FF · wash, иконки</span></div>
+    <div class="sw"><i style="background:#d8e6ff"></i><b>Blue 80</b><span>#D8E6FF · границы</span></div>
+    <div class="sw"><i style="background:#555555"></i><b>Neutral 30</b><span>#555555 · подписи</span></div>
+    <div class="sw"><i style="background:#191919"></i><b>Neutral 10</b><span>#191919 · уголь, парковка</span></div>
+    <div class="sw"><i style="background:#a31c19"></i><b>Red 30</b><span>#A31C19 · ошибки</span></div>
+    <div class="sw"><i style="background:#f5c84b"></i><b>Yellow 60</b><span>#F5C84B · жёлтый брендбука</span></div>
   </div>
   <h3>Как в приложении</h3>
   <ul>
-    <li>Терракота — «Пополнить», «Войти и привязать», оплата, активный таб, тумблер. Текст на кнопке белый.</li>
-    <li>Белая кнопка с текстом #651e16 — «Продолжить без входа», как «Забронировать номер» в шапке сайта.</li>
-    <li>Чёрный #212121 — вторичные действия («Привязать», «На карту»).</li>
-    <li>Ски-пасс-кошелёк: градиент #c44736 → #651e16. Парковка: уголь #3a3534 → #111111, как тёмные блоки на сайте.</li>
-    <li>Шрифт Golos Text. На сайте Gilroy/SF Pro — в приложение не тащим.</li>
+    <li>Navy #14264E — «Пополнить», «Войти и привязать», оплата, активный таб, тумблер. Текст на кнопке белый.</li>
+    <li>Белая кнопка с текстом #14264E — «Продолжить без входа».</li>
+    <li>Blue 40 #2F73F2 — вторичный акцент, градиенты ски-пасса.</li>
+    <li>Ски-пасс-кошелёк: градиент #2F73F2 → #14264E → #0A2B63. Парковка: уголь #3a3534 → #191919.</li>
+    <li>Шрифт Golos Text. В брендбуке Gilroy — в приложение не тащим.</li>
   </ul>
   <h3>Главная: разделы</h3>
   <ul>
-    <li>Логотип — оригинальный SVG с volen.ru (<code>static.tildacdn.com/…/logo.svg</code>), заливка <code>currentColor</code>: терракота на светлом фоне, белый на терракоте.</li>
-    <li>Статус — обычный текст 13px: зелёная точка #1a7a4c, «Открыто до 22:00» жирным, дальше факты через «·». Без плашек и чипов.</li>
+    <li>Логотип — знак «В» из брендбука (лыжный след) и слово «ВОЛЕН»: заливка <code>currentColor</code>, navy на светлом, белый на тёмном.</li>
+    <li>Статус — обычный текст 13px: зелёная точка, «Открыто до 22:00» жирным, дальше факты через «·». Без плашек и чипов.</li>
     <li>Тайлы Ски-пасс / Парковка — 2 в ряд, 148px, скругление 22: иконка контуром вверху слева, маска номера моноширинным, баланс 24px, название 16px, подпись 12px. Градиенты те же, что у кошельков в профиле. Без декоративных кругов и бликов.</li>
-    <li>Акции — четыре градиента: терракота (#c44736 → #651e16), уголь (#3a3534 → #111111), коралл (#ff8562 → #ac2d1e), глубокий (#651e16 → #262526). Процент крупно в правом верхнем углу, тег слева.</li>
-    <li>Расписание — белый список, точка-индикатор: зелёная #1a7a4c «открыто», серая #c4c3bf «закрыто». Часы табличными цифрами.</li>
-    <li>Услуги — плитки 4 в ряд, иконка 22px в контейнере 40px на фоне Wash #f4e4e0, подпись 11px. Иконки — единый набор, штрих 1.75, viewBox 24.</li>
-    <li>Ресторан и афиша — фото-карточки высотой 186px с градиентной вуалью снизу, тег терракота в углу.</li>
-    <li>Номера — карусель карточек 196px: фото 112px, название, площадь · гости, «Забронировать ›» терракотой.</li>
-    <li>Шторки деталей — те же <code>.sheet/.panel</code>, что у оплаты, до 90% высоты, скролл внутри, основная кнопка терракота, вторая белая.</li>
-    <li>Таббар — плавающее стекло: отступ 12px от краёв и 18px снизу, высота 66, радиус 24; фон <code>rgba(255,255,255,.72)</code> + <code>backdrop-filter: blur(22px) saturate(1.6)</code>, граница <code>rgba(255,255,255,.75)</code>, мягкая тень. Активная вкладка — пилюля <code>rgba(172,45,30,.09)</code> с терракотовой иконкой. Без поддержки blur — белый 96%. Во Flutter — <code>BackdropFilter</code> + <code>ClipRRect</code>.</li>
+    <li>Акции — четыре градиента: Blue 40 → Blue 10, уголь, Red 40 → Brand, Blue 10. Процент крупно в правом верхнем углу, тег слева.</li>
+    <li>Расписание — белый список, точка-индикатор: зелёная Green 30 «открыто», серая «закрыто». Часы табличными цифрами.</li>
+    <li>Услуги — плитки 4 в ряд, иконка 22px в контейнере 40px на фоне Blue 90 #EAF1FF, подпись 11px. Иконки — единый набор, штрих 1.75, viewBox 24.</li>
+    <li>Ресторан и афиша — фото-карточки высотой 186px с градиентной вуалью снизу, тег navy в углу.</li>
+    <li>Номера — карусель карточек 196px: фото 112px, название, площадь · гости, «Забронировать ›» navy.</li>
+    <li>Шторки деталей — те же <code>.sheet/.panel</code>, что у оплаты, до 90% высоты, скролл внутри, основная кнопка navy, вторая белая.</li>
+    <li>Таббар — плавающее стекло: отступ 12px от краёв и 18px снизу, высота 66, радиус 24; фон <code>rgba(255,255,255,.72)</code> + <code>backdrop-filter: blur(22px) saturate(1.6)</code>, граница <code>rgba(255,255,255,.75)</code>, мягкая тень. Активная вкладка — пилюля <code>rgba(20,38,78,.09)</code> с navy-иконкой. Без поддержки blur — белый 96%. Во Flutter — <code>BackdropFilter</code> + <code>ClipRRect</code>.</li>
     <li>Движение: появление блоков снизу 10px, 450мс, шаг 45мс; hover — тень без сдвига; при <code>prefers-reduced-motion</code> анимации выключены. Тач-таргеты не меньше 44px.</li>
   </ul>
 `
 };
 function showDoc(id){document.getElementById("doc").innerHTML=DOCS[id];document.querySelectorAll(".tabs button").forEach(b=>b.classList.remove("on"));document.getElementById("t-"+id).classList.add("on")}
 showDoc("tz");render();
+(function exportBoard(){
+  if(!new URLSearchParams(location.search).has("export")) return;
+  document.body.classList.add("export-mode");
+  const board=document.createElement("div");
+  board.className="export-board";
+  const scenarios=[
+    ["home","01 Главная · Волен"],
+    ["step","02 Главная · Степаново"],
+    ["way","03 Как доехать"],
+    ["promo","04 Акция"],
+    ["svc","05 Услуга"],
+    ["room","06 Номер"],
+    ["you","07 Профиль"],
+    ["name","08 Имя"],
+    ["email","09 Почта"],
+    ["email-otp","10 Код с почты"],
+    ["photo","11 Фото"],
+    ["gallery","12 Галерея"],
+    ["hist","13 История"],
+    ["lock","14 Защита от перебора"],
+    ["phone","15 Телефон"],
+    ["otp-new","16 OTP · новый"],
+    ["otp-old","17 OTP · есть в базе"],
+    ["skip-gate","18 Гейт ски-пасс"],
+    ["skip-guest","19 Ски-пасс без входа"],
+    ["skipass","20 Ски-пасс вошёл"],
+    ["parking","21 Парковка"],
+    ["paid","22 Успех оплаты"]
+  ];
+  const src=document.getElementById("app");
+  for(const [id,label] of scenarios){
+    run(id);
+    const col=document.createElement("div");
+    col.className="export-phone";
+    col.innerHTML=`<div class="lbl">${label}</div><div class="phone"><div class="phone-inner">${src.innerHTML}</div><div class="homebar"></div></div>`;
+    board.appendChild(col);
+  }
+  document.body.appendChild(board);
+})();
 </script>
 </body>
 </html>
